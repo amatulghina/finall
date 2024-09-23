@@ -40,7 +40,7 @@ with st.form("User Profile"):
 if submit:
     # Append the data to Google Sheets
     try:
-        sheet.append_row([name, age, gender, country, savings])
+        sheet.append_row([name, age, gender, country])
         st.success("Data saved successfully!")
     except Exception as e:
         st.error(f"An error occurred: {e}")
