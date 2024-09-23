@@ -37,15 +37,20 @@ Introduction content
 
 with st.form("User Profile"):
     name = st.text_input("Name")
-    age = st.number_input("Age", min_value=10, max_value=100)
+    age = st.number_input("Age", min_value=15, max_value=100)
     gender = st.selectbox("Gender", ["Male", "Female", "Other"])
     country = st.selectbox("Country", ["France", "Germany", "Spain"])
     submit = st.form_submit_button("Submit")
 
-if submit:
-    # Append the data to Google Sheets
-    try:
+if submit_button:
+    # Check if all required fields are filled
+    if not name:
+        st.warning("Please fill in your name.")
+    elif age <= 0:
+        st.warning("Please provide a valid age.")
+    elif savings <= 0:
+        st.warning("Please provide a valid amount for savings.")
+    else:
+        # Proceed if all fields are filled
         sheet.append_row([name, age, gender, country])
         st.success("Data saved successfully!")
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
