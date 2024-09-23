@@ -4,19 +4,21 @@ import numpy as np
 import yfinance as yf
 import matplotlib
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2 import service_account
 
 # Load the Google Sheets credentials from the Streamlit secrets
 google_sheets_creds = st.secrets["google_sheets"]
 
+# Create credentials using the google.oauth2 library
+credentials = service_account.Credentials.from_service_account_info(google_sheets_creds)
+
 # Define the scope (permissions) for the Google Sheets API
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+scoped_credentials = credentials.with_scopes(
+    ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+)
 
-# Set up the credentials for accessing Google Sheets
-credentials = ServiceAccountCredentials.from_json_keyfile_dict(google_sheets_creds, scope)
-
-# Authenticate and initialize the gspread client
-client = gspread.authorize(credentials)
+# Authenticate and initialize the gspread client with scoped credentials
+client = gspread.authorize(scoped_credentials)
 
 # Open the Google Sheet by name
 sheet = client.open("finall_project").visitor
