@@ -42,7 +42,7 @@ with st.form("User Profile"):
     country = st.selectbox("Country", ["France", "Germany", "Spain"])
     submit = st.form_submit_button("Submit")
 
-if submit_button:
+if submit:
     # Check if all required fields are filled
     if not name:
         st.warning("Please fill in your name.")
