@@ -48,8 +48,6 @@ if submit:
         st.warning("Please fill in your name.")
     elif age <= 0:
         st.warning("Please provide a valid age.")
-    elif savings <= 0:
-        st.warning("Please provide a valid amount for savings.")
     else:
         # Proceed if all fields are filled
         sheet.append_row([name, age, gender, country])
