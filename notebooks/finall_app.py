@@ -21,7 +21,7 @@ scoped_credentials = credentials.with_scopes(
 client = gspread.authorize(scoped_credentials)
 
 # Open the Google Sheet by name
-sheet = client.open("finall_project").visitor
+sheet = client.open("finall_project").worksheet("visitor")
 
 
 st.write("""
