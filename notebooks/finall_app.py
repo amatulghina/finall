@@ -30,11 +30,16 @@ st.write("""
 Financial Education for All
 """)
 
+
+st.write("""
+Introduction content
+""")
+
 with st.form("User Profile"):
     name = st.text_input("Name")
     age = st.number_input("Age", min_value=10, max_value=100)
     gender = st.selectbox("Gender", ["Male", "Female", "Other"])
-    country = st.text_input("Country")
+    country = st.selectbox("Country", ["France", "Germany", "Spain"])
     submit = st.form_submit_button("Submit")
 
 if submit:
@@ -44,7 +49,3 @@ if submit:
         st.success("Data saved successfully!")
     except Exception as e:
         st.error(f"An error occurred: {e}")
-
-
-
-
