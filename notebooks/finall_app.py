@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import yfinance as yf
 import matplotlib
+import datetime
 import gspread
 from google.oauth2 import service_account
 
