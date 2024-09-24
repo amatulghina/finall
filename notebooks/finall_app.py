@@ -50,5 +50,6 @@ if submit:
         st.warning("Please provide a valid age.")
     else:
         # Proceed if all fields are filled
-        sheet.append_row([name, age, gender, country])
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        sheet.append_row([timestamp, name, age, gender, country])
         st.success("Data saved successfully!")
