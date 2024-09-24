@@ -55,6 +55,8 @@ contourpy==1.3.0
     # via matplotlib
 cycler==0.12.1
     # via matplotlib
+datetime==5.5
+    # via finall (pyproject.toml)
 debugpy==1.8.5
     # via ipykernel
 decorator==5.1.1
@@ -322,6 +324,7 @@ python-json-logger==2.0.7
     # via jupyter-events
 pytz==2024.2
     # via
+    #   datetime
     #   pandas
     #   yfinance
 pyyaml==6.0.2
@@ -366,7 +369,9 @@ seaborn==0.13.2
 send2trash==1.8.3
     # via jupyter-server
 setuptools==75.1.0
-    # via jupyterlab
+    # via
+    #   jupyterlab
+    #   zope-interface
 six==1.16.0
     # via
     #   asttokens
@@ -450,3 +455,5 @@ widgetsnbextension==4.0.13
     # via ipywidgets
 yfinance==0.2.43
     # via finall (pyproject.toml)
+zope-interface==7.0.3
+    # via datetime
