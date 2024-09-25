@@ -33,15 +33,20 @@ Financial Education for All
 
 
 st.write("""
-Introduction content
+Introduction content (to be developed)
+
+In order to give you personalized financial advice, we would like to know you more.
+Please fill the form below:
+
 """)
 
 with st.form("User Profile"):
+    st.header("User Profile Information")
+    country = st.selectbox("Country", ["France", "Germany", "Spain"])
     name = st.text_input("Name")
     age = st.number_input("Age", min_value=15, max_value=100)
     gender = st.selectbox("Gender", ["Male", "Female", "Other"])
-    country = st.selectbox("Country", ["France", "Germany", "Spain"])
-
+    
     # Risk Profiling Section
     st.header("Risk Profiling Questionnaire")
     # Risk Needs
