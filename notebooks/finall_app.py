@@ -174,7 +174,7 @@ if submit:
         
         st.write("Investment allocation recommendation (to be developed)")
         
-        st.head("Stock Market Information")
+        st.header("Stock Market Information")
         
         print(country)
         
