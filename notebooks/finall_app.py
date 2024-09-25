@@ -184,7 +184,7 @@ if submit:
         }
         
         index = yf.Ticker(indices[country])
-        index_data = index.history(period="5y"
+        index_data = index.history(period="5y")
         
         st.line_chart(index_data.Close)
         st.line_chart(index_data.Volume)
