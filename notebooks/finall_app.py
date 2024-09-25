@@ -189,7 +189,6 @@ if submit:
         index_data = index.history(period="5y")
         
         st.line_chart(index_data.Close)
-        st.line_chart(index_data.Volume)
         
         
         
