@@ -176,6 +176,19 @@ if submit:
         
         st.header("Stock Market Information")
         
-        print(country)
+        # Define the ticker symbols for the indices
+        indices = {
+            "France": "^FCHI",
+            "Germany": "^GDAXI",
+            "Spain": "^IBEX"
+        }
+        
+        index = yf.Ticker(indices[country])
+        index_data = index.history(period="5y"
+        
+        st.line_chart(index_data.Close)
+        st.line_chart(index_data.Volume)
+        
+        
         
         
