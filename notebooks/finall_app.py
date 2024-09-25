@@ -125,11 +125,35 @@ if submit:
         else:
             profile = "Aggressive"
         
+        # Function to generate sequential user ID
+        def get_user_id(sheet):
+            # Get all records from the sheet
+            records = sheet.get_all_records()
+
+            # Check if the sheet is empty
+            if len(records) == 0:
+                # Start with ID '00000001' if the sheet is empty
+                return "00000001"
+
+            # Get the last row's ID
+            last_row = records[-1]
+            last_id = last_row.get("ID")  # Assumes 'ID' is the column header for the ID field
+
+            # Increment the last ID
+            next_id = int(last_id) + 1
+
+            # Pad the ID with leading zeros to ensure 8 digits
+            return str(next_id).zfill(7)
+        
+        # Generate User ID
+        user_id = get_user_id(sheet)
+        
         # Get the current timestamp
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         # Collect user profile and risk profile data in one row
         user_data = [
             timestamp,  # Current timestamp
+            user_id,    # User ID
             name,       # Name
             age,        # Age  
             gender,     # Gender  
