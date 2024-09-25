@@ -87,9 +87,46 @@ if submit:
         st.warning("Please fill in your gender.")
     
     else:
+        points = 0
+        # Assign points based on answers (you can create mappings for each question)
+        points += {"Capital preservation": 1, "Moderate capital growth": 2, "High capital growth": 3}[q1]
+        points += {"Less than 3 years": 1, "3-10 years": 2, "More than 10 years": 3}[q2]
+        points += {"3-5%": 1, "5-10%": 2, "More than 10%": 3}[q3]
+        points += {"Income is just sufficient": 1, "Income exceeds expenses slightly": 2, "Income greatly exceeds expenses": 3}[q4]
+        points += {"Little to no savings": 1, "Modest savings": 2, "Significant savings": 3}[q5]
+        points += {"Not very stable": 1, "Somewhat stable": 2, "Very stable": 3}[q6]
+        points += {"Sell immediately": 1, "Do nothing": 2, "Buy more": 3}[q7]
+        points += {"Very uncomfortable": 1, "Somewhat uncomfortable": 2, "Comfortable": 3}[q8]
+        points += {"Minimize risk": 1, "Moderate risk": 2, "High risk": 3}[q9]
+
+        # Risk Needs
+        risk_need = 0
+        risk_need += {"Capital preservation": 1, "Moderate capital growth": 2, "High capital growth": 3}[q1]
+        risk_need += {"Less than 3 years": 1, "3-10 years": 2, "More than 10 years": 3}[q2]
+        risk_need += {"3-5%": 1, "5-10%": 2, "More than 10%": 3}[q3]
+        
+        # Risk Taking Ability
+        risk_taking = 0
+        risk_taking += {"Income is just sufficient": 1, "Income exceeds expenses slightly": 2, "Income greatly exceeds expenses": 3}[q4]
+        risk_taking += {"Little to no savings": 1, "Modest savings": 2, "Significant savings": 3}[q5]
+        risk_taking += {"Not very stable": 1, "Somewhat stable": 2, "Very stable": 3}[q6]
+        
+        # Behavioural loss tolerance
+        loss_tol = 0
+        loss_tol += {"Sell immediately": 1, "Do nothing": 2, "Buy more": 3}[q7]
+        loss_tol += {"Very uncomfortable": 1, "Somewhat uncomfortable": 2, "Comfortable": 3}[q8]
+        loss_tol += {"Minimize risk": 1, "Moderate risk": 2, "High risk": 3}[q9]
+        
+        # Determine the risk profile based on the total score
+        if points <= 15:
+            profile = "Conservative"
+        elif points <= 21:
+            profile = "Moderate"
+        else:
+            profile = "Aggressive"
+        
         # Get the current timestamp
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
         # Collect user profile and risk profile data in one row
         user_data = [
             timestamp,  # Current timestamp
@@ -99,10 +136,15 @@ if submit:
             country,    # Country
             q1, q2, q3, # Risk Needs
             q4, q5, q6, # Risk-Taking Ability
-            q7, q8, q9  # Behavioral Loss Tolerance
+            q7, q8, q9, # Behavioral Loss Tolerance
+            risk_need,  # Risk Needs Points
+            risk_taking,# Risk-Taking Ability Points
+            loss_tol,   # Behavioral Loss Tolerance Points
+            points      # Total Points
         ]
+        
         sheet.append_row(user_data)
-        st.success(f"Thank you, {name}!")
+        st.success(f"Thank you for providing your information, {name}! Based on the information that you give, you are categorized as a {profile} investor.")
         
 
         
