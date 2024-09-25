@@ -144,7 +144,7 @@ if submit:
         ]
         
         sheet.append_row(user_data)
-        st.success(f"Thank you for providing your information, {name}! Based on the information that you give, you are categorized as a {profile} investor.")
+        st.success(f"Thank you for providing your information, {name}!")
         
-
+        st.write(f"Based on the information that you give, you are categorized as a **{profile}** investor.")
         
