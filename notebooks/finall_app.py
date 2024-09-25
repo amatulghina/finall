@@ -172,3 +172,10 @@ if submit:
         
         st.write(f"Based on the information that you give, you are categorized as a **{profile}** investor.")
         
+        st.write("Investment allocation recommendation (to be developed)")
+        
+        st.head("Stock Market Information")
+        
+        print(country)
+        
+        
