@@ -143,7 +143,7 @@ if submit:
             next_id = int(last_id) + 1
 
             # Pad the ID with leading zeros to ensure 8 digits
-            return str(next_id).zfill(7)
+            return str(next_id).zfill(8)
         
         # Generate User ID
         user_id = get_user_id(sheet)
