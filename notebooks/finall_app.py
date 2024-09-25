@@ -183,6 +183,8 @@ if submit:
             "Spain": "^IBEX"
         }
         
+        st.write(f"Explanation regarding main index in {country} : {indices[country]}")
+        
         index = yf.Ticker(indices[country])
         index_data = index.history(period="5y")
         
