@@ -101,7 +101,7 @@ if submit:
             q4, q5, q6, # Risk-Taking Ability
             q7, q8, q9  # Behavioral Loss Tolerance
         ]
-        sheet.append_row([timestamp, name, age, gender, country])
+        sheet.append_row([timestamp, user_data])
         st.success(f"Thank you, {name}!")
         
 
