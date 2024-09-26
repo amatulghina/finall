@@ -42,10 +42,10 @@ Please fill the form below:
 
 with st.form("User Profile"):
     st.header("User Profile Information")
-    country = st.selectbox("Country", ["France", "Germany", "Spain"])
+    country = st.selectbox("Country (Required)", ["France", "Germany", "Spain"])
     name = st.text_input("Name")
-    age = st.number_input("Age", min_value=15, max_value=100)
-    gender = st.selectbox("Gender", ["Male", "Female", "Other"])
+    age = st.number_input("Age (Required)", min_value=15, max_value=100)
+    gender = st.selectbox("Gender (Required)", ["Male", "Female", "Other"])
     
     # Risk Profiling Section
     st.header("Risk Profiling Questionnaire")
@@ -53,7 +53,7 @@ with st.form("User Profile"):
     q1 = st.radio("What is the primary goal for your investment?", 
                   ["Capital preservation", "Moderate capital growth", "High capital growth"])
     q2 = st.radio("What is your expected investment time horizon?", 
-                  ["Less than 3 years", "3-10 years", "More than 10 years"])
+                  ["Less than 5 years", "5-10 years", "More than 10 years"])
     q3 = st.radio("What annual return do you expect from your investments?", 
                   ["3-5%", "5-10%", "More than 10%"])
 
@@ -79,18 +79,16 @@ with st.form("User Profile"):
 # Logic after form submission
 if submit:
     # Check if all required fields are filled
-    if not name:
-        st.warning("Please fill in your name.")
     if not age:
         st.warning("Please fill in your age.")
-    if not gender:
+    elif not gender:
         st.warning("Please fill in your gender.")
     
     else:
         points = 0
         # Assign points based on answers (you can create mappings for each question)
         points += {"Capital preservation": 1, "Moderate capital growth": 2, "High capital growth": 3}[q1]
-        points += {"Less than 3 years": 1, "3-10 years": 2, "More than 10 years": 3}[q2]
+        points += {"Less than 5 years": 1, "5-10 years": 2, "More than 10 years": 3}[q2]
         points += {"3-5%": 1, "5-10%": 2, "More than 10%": 3}[q3]
         points += {"Income is just sufficient": 1, "Income exceeds expenses slightly": 2, "Income greatly exceeds expenses": 3}[q4]
         points += {"Little to no savings": 1, "Modest savings": 2, "Significant savings": 3}[q5]
@@ -118,9 +116,9 @@ if submit:
         loss_tol += {"Minimize risk": 1, "Moderate risk": 2, "High risk": 3}[q9]
         
         # Determine the risk profile based on the total score
-        if points <= 15:
+        if points <= 9:
             profile = "Conservative"
-        elif points <= 21:
+        elif points <= 18:
             profile = "Moderate"
         else:
             profile = "Aggressive"
@@ -168,9 +166,10 @@ if submit:
         ]
         
         sheet.append_row(user_data)
-        st.success(f"Thank you for providing your information, {name}!")
         
-        st.write(f"Based on the information that you give, you are categorized as a **{profile}** investor.")
+        st.success(f"Thank you {name} for providing your information!")
+        
+        st.write(f"Based on the information provided, you are categorized as a **{profile}** investor. ")
         
         st.write("Investment allocation recommendation (to be developed)")
         
@@ -183,11 +182,13 @@ if submit:
             "Spain": "^IBEX"
         }
         
-        st.write(f"Explanation regarding main index in {country} : {indices[country]}")
+        st.write(f"Explanation regarding main stock index in {country} : {indices[country]} (to be developed)")
+        
+        st.write(f"Explanation regarding main stock index in {country} : {indices[country]} (to be developed)")
+        
         
         index = yf.Ticker(indices[country])
         index_data = index.history(period="5y")
-        
         st.line_chart(index_data.Close)
         
         
