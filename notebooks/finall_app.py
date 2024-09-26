@@ -100,7 +100,7 @@ if submit:
         # Risk Needs
         risk_need = 0
         risk_need += {"Capital preservation": 1, "Moderate capital growth": 2, "High capital growth": 3}[q1]
-        risk_need += {"Less than 3 years": 1, "3-10 years": 2, "More than 10 years": 3}[q2]
+        risk_need += {"Less than 5 years": 1, "5-10 years": 2, "More than 10 years": 3}[q2]
         risk_need += {"3-5%": 1, "5-10%": 2, "More than 10%": 3}[q3]
         
         # Risk Taking Ability
