@@ -6,6 +6,7 @@ import matplotlib
 from datetime import datetime
 import gspread
 from google.oauth2 import service_account
+from industry import industry
 
 # Load the Google Sheets credentials from the Streamlit secrets
 google_sheets_creds = st.secrets["google_sheets"]
@@ -175,12 +176,8 @@ if submit:
         
         st.header("Stock Market Information")
         
-        # Define the ticker symbols for the indices
-        indices = {
-            "France": "^FCHI",
-            "Germany": "^GDAXI",
-            "Spain": "^IBEX"
-        }
+        df = industry(country)
+        st.dataframe(df)
         
         st.write(f"Explanation regarding main stock index in {country} : {indices[country]} (to be developed)")
         
