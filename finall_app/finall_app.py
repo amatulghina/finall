@@ -178,6 +178,16 @@ if submit:
         
         st.header(f"Stock Market Index in {country}")
         
+        # Define the stock market index by country
+        indices = {
+            "France" : "CAC 40",
+            "Germany" : "DAX 40 ",
+            "Spain" : "IBEX 35"
+        }
+        
+        st.write(f"The main stock market index in {country} is called **{}**")
+        st.write("Here is the list of company ")
+        
         # Define the ticker symbols for the indices
         indices = {
             "France" : "^FCHI",
@@ -228,12 +238,22 @@ if submit:
             company_name = stock_info.get('longName', 'N/A')  # Company Name
             industry = stock_info.get('industry', 'N/A')      # Industry
             market_cap = stock_info.get('marketCap', 'N/A')   # Market Capitalization
-
-            # Append the data to the list
-            company_data.append([ticker, company_name, industry, market_cap])
+            try:
+                # Download stock data for the last 5 days
+                stock_data = yf.download(ticker, period='5d')
+        
+                # Get the latest adjusted close price if available
+                if not stock_data.empty:
+                    close_price = round(stock_data['Adj Close'][-1],2)
+                else:
+                    close_price = 'N/A'
+        
+            finally:
+                # Append the data to the list
+                company_data.append([ticker, company_name, industry, market_cap, close_price])
 
         # Create a DataFrame from the list
-        df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap'])
+        df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price'])
 
         df = df[df["Market Cap"]!="N/A"]
         df["Market Cap"] = pd.to_numeric(df["Market Cap"])
@@ -246,6 +266,8 @@ if submit:
         index = yf.Ticker(indices[country])
         index_data = index.history(period="5y")
         st.line_chart(index_data.Close)
+        
+
         
         
         
