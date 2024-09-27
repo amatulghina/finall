@@ -24,6 +24,9 @@ client = gspread.authorize(scoped_credentials)
 # Open the Google Sheet by name
 sheet = client.open("finall_project").worksheet("visitor")
 
+st.set_page_config(
+    page_title="FinAll"
+)
 
 st.write("""
 # Welcome to FinAll Project!
@@ -236,8 +239,6 @@ if submit:
         df["Market Cap"] = pd.to_numeric(df["Market Cap"])
         df = df.sort_values(by="Market Cap", ascending=False)
         st.dataframe(df)
-        
-        st.write(f"Explanation regarding main stock index in {country} : {indices[country]} (to be developed)")
         
         st.write(f"Explanation regarding main stock index in {country} : {indices[country]} (to be developed)")
         
