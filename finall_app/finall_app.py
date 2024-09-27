@@ -176,7 +176,7 @@ if submit:
         
         st.write("Investment allocation recommendation (to be developed)")
         
-        st.header("Stock Market Information")
+        st.header(f"Stock Market Index in {country}")
         
         # Define the ticker symbols for the indices
         indices = {
