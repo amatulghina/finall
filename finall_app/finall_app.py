@@ -179,13 +179,13 @@ if submit:
         st.header(f"Stock Market Index in {country}")
         
         # Define the stock market index by country
-        indices = {
+        indices_name = {
             "France" : "CAC 40",
             "Germany" : "DAX 40 ",
             "Spain" : "IBEX 35"
         }
         
-        st.write(f"The main stock market index in {country} is called **{}**")
+        st.write(f"The main stock market index in {country} is called **{indices_name[country]}**")
         st.write("Here is the list of company ")
         
         # Define the ticker symbols for the indices
