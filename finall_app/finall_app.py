@@ -309,7 +309,8 @@ if submit:
         
 
         # Company Analysis
-        
+        st.header("Company Analysis")
+        st.selectbox("Pick one", indices[country][2])
 
         
         
