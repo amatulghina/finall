@@ -175,9 +175,9 @@ if submit:
         st.write(f"Based on the information provided, you are categorized as a **{profile}** investor. ")
         
         if profile == "Conservative":
-            st.write(f"Given your **low risk tolerance** and preference for stable returns, with less comfort around volatility, we recommend focusing more on **low-risk instruments** such as  government bonds and limiting your stock investments.")
+            st.write(f"Given your **low risk tolerance** and preference for stable returns, we recommend focusing more on **low-risk instruments** such as government bonds and limiting your stock investments.")
         elif profile == "Moderate":
-            st.write(f"Given your **moderate risk tolerance** and willingness to take on some risk for potential returns, we recommend **a balanced mix of stocks and bonds** in your investment portfolio to better align with your financial goals.")
+            st.write(f"Given your **moderate risk tolerance** and willingness to take on some risk for potential returns, we recommend **a balanced mix of stocks and bonds** in your investment portfolio.")
         elif profile == "Aggressive":
             st.write(f"As you are willing to **accept greater economic uncertainty** in exchange for the potential of higher returns, we suggest allocating a **significant portion of your investment portfolio to stocks**.")
         
@@ -185,7 +185,7 @@ if submit:
         
         type_instruments = {
             'Risk Level': ["Low","Moderate","High"],
-            'Example of Investing Instruments': ['Government Bonds or High-quality Corporate Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
+            'Example of Investing Instruments': ['Government Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
             'Description': ['Lower returns but are stable and less prone to volatility.','A balance of safety and growth.','Potential for high returns but also high volatility and risk.']
         }
         
