@@ -24,10 +24,8 @@ client = gspread.authorize(scoped_credentials)
 # Open the Google Sheet by name
 sheet = client.open("finall_project").worksheet("visitor")
 
-im = Image.open("https://github.com/amatulghina/finall/blob/master/img/finall-favicon-color.png")
 st.set_page_config(
-    page_title="FinAll",
-    page_icon=im
+    page_title="FinAll"
 )
 
 st.write("""
@@ -240,6 +238,7 @@ if submit:
             Originally comprising 30 companies, the DAX index was expanded to include 40 companies in September 2021. The constituents are selected based on their market capitalization and liquidity. These companies span **various sectors**, including automotive, pharmaceuticals, finance, technology, and consumer goods.
             The DAX 40 is widely regarded as one of the **key indicator** of the **German economy**. A rising DAX suggests investor confidence and positive economic conditions, while a declining DAX may indicate economic concerns.
             """)
+            
         # Stock Index and Industry
         st.subheader(f"{indices[country][0]} Performance Index")
         index = yf.Ticker(indices[country][1])
