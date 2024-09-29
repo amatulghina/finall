@@ -165,7 +165,7 @@ if submit:
             risk_need,  # Risk Needs Points
             risk_taking,# Risk-Taking Ability Points
             loss_tol,   # Behavioral Loss Tolerance Points
-            points      # Total Points
+            points,      # Total Points
             profile     # Overall Risk Profile
         ]
         
