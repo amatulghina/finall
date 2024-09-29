@@ -238,20 +238,6 @@ if submit:
             company_name = stock_info.get('longName', 'N/A')  # Company Name
             industry = stock_info.get('industry', 'N/A')      # Industry
             market_cap = stock_info.get('marketCap', 'N/A')   # Market Capitalization
-            try:
-                # Download stock data for the last 5 days
-                stock_data = yf.download(ticker, period='5d')
-
-                # Get the latest adjusted close price if available
-                if not stock_data.empty:
-                    close_price = round(stock_data['Adj Close'][-1],2)
-                else:
-                    close_price = 'N/A'
-
-            finally:
-                # Append the data to the list
-                company_data.append([ticker, company_name, industry, market_cap, close_price])
-            
             def calculate_average_annual_return(ticker):
                 # Download the stock data for the past 5 years (adjustable)
                 stock_data = yf.download(ticker, period="5y", interval="1d")
@@ -269,21 +255,25 @@ if submit:
                 avg_annual_return = yearly_returns.mean()
 
                 # Format it as percentage
-                avg_annual_return_percentage = avg_annual_return * 100
+                avg_annual_return_percentage = round(avg_annual_return * 100,2)
 
                 return avg_annual_return_percentage
 
             try:
+                # Download stock data for the last 5 days
                 stock_data = yf.download(ticker, period="5y", interval="1d")
 
+                # Get the latest adjusted close price if available
                 if not stock_data.empty:
+                    close_price = round(stock_data['Adj Close'][-1],2)
                     average_return = calculate_average_annual_return(ticker)
                 else:
+                    close_price = 'N/A'
                     average_return = 'N/A'
-            finally:
-                company_data.append([average_return])
 
-            
+            finally:
+                # Append the data to the list
+                company_data.append([ticker, company_name, industry, market_cap, close_price, average_return])
 
         # Create a DataFrame from the list
         df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price (EUR)','Avg. Annual Return (%)'])
