@@ -220,20 +220,20 @@ if submit:
         
         if country == "France":
             st.write("""
-            The primary stock market index in France is **CAC 40 (Cotation Assistée en Continu)**. The CAC 40 is a benchmark index that represents the **40 largest publicly traded companies** listed on the **Euronext Paris stock exchange**.
-            The index is composed of 40 companies that are chosen based on their market capitalization, liquidity, and other factors. The companies span **various sectors**, including finance, technology, healthcare, consumer goods, and energy.
+            The primary stock market index in France is **CAC 40 (Cotation Assistée en Continu)**. The CAC 40 is a benchmark index that represents the **40 largest publicly traded companies** listed on the **Euronext Paris stock exchange**. \n
+            The index is composed of 40 companies that are chosen based on their market capitalization, liquidity, and other factors. The companies span **various sectors**, including finance, technology, healthcare, consumer goods, and energy. \n
             The CAC 40 is widely regarded as one of the **key indicator** of the **French economy**. A rising CAC 40 typically suggests investor confidence and economic growth, while a declining index may indicate economic challenges.
             """)
         elif country == "Spain":
             st.write("""
-            The primary stock market index in Spain is **IBEX 35 (Índice Bursátil Español)**. The IBEX 35 is a benchmark index that includes the **35 largest companies** listed on the **Madrid Stock Exchange**.
-            The index comprises 35 companies selected based on criteria such as market capitalization, liquidity, and sector representation. These companies are from **various sectors**, including finance, energy, telecommunications, and consumer goods.
+            The primary stock market index in Spain is **IBEX 35 (Índice Bursátil Español)**. The IBEX 35 is a benchmark index that includes the **35 largest companies** listed on the **Madrid Stock Exchange**. \n
+            The index comprises 35 companies selected based on criteria such as market capitalization, liquidity, and sector representation. These companies are from **various sectors**, including finance, energy, telecommunications, and consumer goods. \n
             The IBEX 35 is widely regarded as one of the **key indicator** of the **Spanish economy**. An increase in the index generally indicates investor confidence and economic growth, while a decrease may signal economic challenges or instability.
             """)
         elif country == "Germany":
             st.write("""
-            The primary stock market index in Germany is **DAX 40 (Deutscher Aktienindex)**. The DAX 40 is a stock market index that represents the **40 largest publicly traded companies** listed on the Frankfurt Stock Exchange.
-            Originally comprising 30 companies, the DAX index was expanded to include 40 companies in September 2021. The constituents are selected based on their market capitalization and liquidity. These companies span **various sectors**, including automotive, pharmaceuticals, finance, technology, and consumer goods.
+            The primary stock market index in Germany is **DAX 40 (Deutscher Aktienindex)**. The DAX 40 is a stock market index that represents the **40 largest publicly traded companies** listed on the Frankfurt Stock Exchange. \n
+            Originally comprising 30 companies, the DAX index was expanded to include 40 companies in September 2021. The constituents are selected based on their market capitalization and liquidity. These companies span **various sectors**, including automotive, pharmaceuticals, finance, technology, and consumer goods. \n
             The DAX 40 is widely regarded as one of the **key indicator** of the **German economy**. A rising DAX suggests investor confidence and positive economic conditions, while a declining DAX may indicate economic concerns.
             """)
             
