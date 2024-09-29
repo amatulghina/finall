@@ -176,6 +176,8 @@ if submit:
         
         st.write("Investment allocation recommendation (to be developed)")
         
+        
+        
         st.header(f"Stock Market Index in {country}")
         
         # Define the stock market index by country
@@ -239,7 +241,7 @@ if submit:
         df["Market Cap"] = pd.to_numeric(df["Market Cap"])
         df = df.sort_values(by="Market Cap", ascending=False)
         df = df.reset_index(drop=True)
-        st.table(df)
+        st.dataframe(df, hide_index=True)
         
         # Stock Index and Industry
         st.write(f"Explanation regarding main stock index in {country} : {indices[country][0]} (to be developed)")
