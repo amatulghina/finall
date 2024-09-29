@@ -24,7 +24,7 @@ client = gspread.authorize(scoped_credentials)
 # Open the Google Sheet by name
 sheet = client.open("finall_project").worksheet("visitor")
 
-im = Image.open("../img/finall-favicon-color.png")
+im = Image.open("https://github.com/amatulghina/finall/blob/master/img/finall-favicon-color.png")
 st.set_page_config(
     page_title="FinAll",
     page_icon=im
