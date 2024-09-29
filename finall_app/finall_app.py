@@ -234,10 +234,15 @@ if submit:
             """)
         elif country == "Germany":
             st.write("""
-            The primary stock market index in Germany is **DAX 40 (Deutscher Aktienindex)**. The DAX 40 is a stock market index that represents the 40 largest publicly traded companies listed on the Frankfurt Stock Exchange.
+            The primary stock market index in Germany is **DAX 40 (Deutscher Aktienindex)**. The DAX 40 is a stock market index that represents the **40 largest publicly traded companies** listed on the Frankfurt Stock Exchange.
             Originally comprising 30 companies, the DAX index was expanded to include 40 companies in September 2021. The constituents are selected based on their market capitalization and liquidity. These companies span **various sectors**, including automotive, pharmaceuticals, finance, technology, and consumer goods.
             The DAX 40 is widely regarded as one of the **key indicator** of the **German economy**. A rising DAX suggests investor confidence and positive economic conditions, while a declining DAX may indicate economic concerns.
             """)
+        # Stock Index and Industry
+        st.subheader(f"{indices[country][0]}DAX 40 Performance Index")
+        index = yf.Ticker(indices[country][1])
+        index_data = index.history(period="5y")
+        st.line_chart(index_data.Close)
         
         st.write("Here is the list of company:")
 
@@ -303,17 +308,7 @@ if submit:
         df = df.reset_index(drop=True)
         st.dataframe(df, hide_index=True)
         
-        # Stock Index and Industry
-        st.write(f"Explanation regarding main stock index in {country} : {indices[country][0]} (to be developed)")
-        
-        
-        
-        
-        
-        index = yf.Ticker(indices[country][1])
-        index_data = index.history(period="5y")
-        st.line_chart(index_data.Close)
-        
+
         # Company Analysis
         
 
