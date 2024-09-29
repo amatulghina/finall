@@ -186,7 +186,7 @@ if submit:
         type_instruments = {
             'Risk Level': ["Low","Moderate","High"],
             'Example of Investing Instruments': ['Government Bonds or High-quality Corporate Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
-            'Description': ['Investments that offer lower returns but are stable and less prone to volatility. Ideal for risk-averse investors prioritizing capital preservation over growth.', 'Investments that offer a balance of safety and growth. These instruments can experience moderate volatility but aim to generate reasonable returns while managing risk.', 'Investments with the potential for high returns but also high volatility and risk. Suitable for investors who can tolerate significant fluctuations in value and potential capital loss.']
+            'Description': ['Lower returns but are stable and less prone to volatility.','A balance of safety and growth.','Potential for high returns but also high volatility and risk.']
         }
         
         inv_instruments = pd.DataFrame(type_instruments)
