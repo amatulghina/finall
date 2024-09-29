@@ -199,10 +199,10 @@ if submit:
                          'HEI.DE', 'BAYN.DE', 'SY1.DE', 'HFG.DE', 'MBG.DE', 'HLE.DE', 'BNR.DE', 'TYO.DE']]
         }
         
-        st.write(f"The main stock market index in {country} is called **{indices_name[country][0]}**")
+        st.write(f"The main stock market index in {country} is called **{indices[country][0]}**")
         st.write("Here is the list of company ")
 
-        index_tickers = indices_tickers[country][2]
+        index_tickers = indices[country][2]
 
         # Create an empty list to hold company information
         company_data = []
