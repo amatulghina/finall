@@ -24,9 +24,7 @@ client = gspread.authorize(scoped_credentials)
 # Open the Google Sheet by name
 sheet = client.open("finall_project").worksheet("visitor")
 
-st.set_page_config(
-    page_title="FinAll"
-)
+st.set_page_config(page_title="FinAll")
 
 st.write("""
 # Welcome to FinAll Project!
