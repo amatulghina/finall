@@ -173,10 +173,25 @@ if submit:
         st.success(f"Thank you {name} for providing your information!")
         
         st.write(f"Based on the information provided, you are categorized as a **{profile}** investor. ")
+        if profile = "Conservative":
+            st.write(f"Given your **low risk tolerance** and preference for stable returns, with less comfort around volatility, we recommend **focusing more on low-risk instruments** such as  government bonds and limiting your stock investments.")
+        elif profile = "Moderate":
+            st.write(f"Given your **moderate risk tolerance** and willingness to take on some risk for potential returns, we recommend **a balanced mix of stocks and bonds** in your investment portfolio to better align with your financial goals.")
+        elif profile = "Aggressive"
+            st.write(f"As you are willing to **accept greater economic uncertainty** in exchange for the potential of higher returns, we suggest allocating a **significant portion of your investment portfolio to stocks**.")
         
-        st.write("Investment allocation recommendation (to be developed)")
+        st.write("The table below provides a general classification of investment instruments based on their risk levels:")
         
+        type_instruments = {
+            'Risk Level': ['Low','Moderate','High'],
+            'Example of Investing Instruments': [['Government Bonds','High-quality Corporate Bonds','Money Market Funds'],'Balanced mutual funds (bonds & stocks)',['Stocks','Commodities']],
+            'Description': ['Investments that offer lower returns but are stable and less prone to volatility. Ideal for risk-averse investors prioritizing capital preservation over growth.', 'Investments that offer a balance of safety and growth. These instruments can experience moderate volatility but aim to generate reasonable returns while managing risk.', 'Investments with the potential for high returns but also high volatility and risk. Suitable for investors who can tolerate significant fluctuations in value and potential capital loss.']
+        }
         
+        inv_instruments = pd.DataFrame([type_instruments])
+        st.dataframe(inv_instruments, hide_index=True)
+        
+        st.write("Investment allocation recommendation (still being developed)")
         
         st.header(f"Stock Market Index in {country}")
         
@@ -201,8 +216,8 @@ if submit:
                          'HEI.DE', 'BAYN.DE', 'SY1.DE', 'HFG.DE', 'MBG.DE', 'HLE.DE', 'BNR.DE', 'TYO.DE']]
         }
         
-        st.write(f"The main stock market index in {country} is called **{indices[country][0]}**")
-        st.write("Here is the list of company ")
+        st.write(f"The main stock market index in {country} is called **{indices[country][0]}**.")
+        st.write("Here is the list of company:")
 
         index_tickers = indices[country][2]
 
