@@ -179,50 +179,30 @@ if submit:
         st.header(f"Stock Market Index in {country}")
         
         # Define the stock market index by country
-        indices_name = {
-            "France" : "CAC 40",
-            "Germany" : "DAX 40 ",
-            "Spain" : "IBEX 35"
+        indices = {
+            "France" : ["CAC 40","^FCHI",
+                        ['AIR.PA', 'ALO.PA', 'ORA.PA', 'BNP.PA', 'EN.PA', 'VIE.PA', 'ENGI.PA', 'CA.PA', 
+                         'BN.PA', 'ACA.PA', 'SGO.PA', 'LR.PA', 'RMS.PA', 'RI.PA', 'SAN.PA', 'AI.PA',
+                         'CAP.PA', 'SU.PA', 'DSY.PA', 'EDF.PA', 'VIV.PA', 'KER.PA', 'MC.PA', 'MT.PA',
+                         'OR.PA', 'PUB.PA', 'SAF.PA', 'STM.PA', 'FTI.PA', 'DG.PA', 'HO.PA', 'ML.PA',
+                         'FR.PA', 'WLN.PA', 'CS.PA', 'FP.PA', 'TT.PA', 'SG.PA', 'URW.PA', 'VK.PA']],
+            "Germany" : ["DAX 40","^GDAXI",
+                        ['ACX.MC', 'ACS.MC', 'AENA.MC', 'ALM.MC', 'AMS.MC', 'ANA.MC', 'BBVA.MC', 'BKT.MC',
+                          'CABK.MC', 'CLNX.MC', 'COL.MC', 'ELE.MC', 'ENG.MC', 'FER.MC', 'GRF.MC', 'IAG.MC',
+                          'IBE.MC', 'ITX.MC','MEL.MC', 'MTS.MC', 'NTGY.MC', 'PHM.MC', 'RED.MC', 'REP.MC', 'ROVI.MC',
+                          'SAB.MC', 'SAN.MC', 'SGRE.MC', 'SLR.MC', 'TEF.MC']],
+            "Spain" : ["IBEX 35","^IBEX",
+                      ['ADS.DE','AIR.DE','ALV.DE', 'BAS.DE', 'BAYN.DE', 'BEI.DE', 'BMW.DE', 'CON.DE',
+                         '1COV.DE', 'DHER.DE', 'DTE.DE', 'DPW.DE', 'DB1.DE', 'DBK.DE', 'ENR.DE', 'FRE.DE',   
+                         'FME.DE', 'HEN3.DE', 'HNR1.DE', 'IFX.DE', 'LIN.DE', 'MRK.DE', 'MTX.DE', 'MUV2.DE',
+                         'PUM.DE', 'RWE.DE', 'SAP.DE', 'SHL.DE', 'SIE.DE', 'VNA.DE', 'VOW3.DE', 'ZAL.DE',
+                         'HEI.DE', 'BAYN.DE', 'SY1.DE', 'HFG.DE', 'MBG.DE', 'HLE.DE', 'BNR.DE', 'TYO.DE']]
         }
         
         st.write(f"The main stock market index in {country} is called **{indices_name[country]}**")
         st.write("Here is the list of company ")
-        
-        # Define the ticker symbols for the indices
-        indices = {
-            "France" : "^FCHI",
-            "Germany" : "^GDAXI",
-            "Spain" : "^IBEX"
-        }
 
-        # CAC 40 (^FCHI) index tickers
-        cac40_tickers = ['AIR.PA', 'ALO.PA', 'ORA.PA', 'BNP.PA', 'EN.PA', 'VIE.PA', 'ENGI.PA', 'CA.PA', 
-                         'BN.PA', 'ACA.PA', 'SGO.PA', 'LR.PA', 'RMS.PA', 'RI.PA', 'SAN.PA', 'AI.PA',
-                         'CAP.PA', 'SU.PA', 'DSY.PA', 'EDF.PA', 'VIV.PA', 'KER.PA', 'MC.PA', 'MT.PA',
-                         'OR.PA', 'PUB.PA', 'SAF.PA', 'STM.PA', 'FTI.PA', 'DG.PA', 'HO.PA', 'ML.PA',
-                         'FR.PA', 'WLN.PA', 'CS.PA', 'FP.PA', 'TT.PA', 'SG.PA', 'URW.PA', 'VK.PA']
-
-        # IBEX 35 (^IBEX) index tickers
-        ibex35_tickers = ['ACX.MC', 'ACS.MC', 'AENA.MC', 'ALM.MC', 'AMS.MC', 'ANA.MC', 'BBVA.MC', 'BKT.MC',
-                          'CABK.MC', 'CLNX.MC', 'COL.MC', 'ELE.MC', 'ENG.MC', 'FER.MC', 'GRF.MC', 'IAG.MC',
-                          'IBE.MC', 'ITX.MC','MEL.MC', 'MTS.MC', 'NTGY.MC', 'PHM.MC', 'RED.MC', 'REP.MC', 'ROVI.MC',
-                          'SAB.MC', 'SAN.MC', 'SGRE.MC', 'SLR.MC', 'TEF.MC']
-
-        # DAX 40 (^DAX) index tickers
-        dax40_tickers = ['ADS.DE','AIR.DE','ALV.DE', 'BAS.DE', 'BAYN.DE', 'BEI.DE', 'BMW.DE', 'CON.DE',
-                         '1COV.DE', 'DHER.DE', 'DTE.DE', 'DPW.DE', 'DB1.DE', 'DBK.DE', 'ENR.DE', 'FRE.DE',   
-                         'FME.DE', 'HEN3.DE', 'HNR1.DE', 'IFX.DE', 'LIN.DE', 'MRK.DE', 'MTX.DE', 'MUV2.DE',
-                         'PUM.DE', 'RWE.DE', 'SAP.DE', 'SHL.DE', 'SIE.DE', 'VNA.DE', 'VOW3.DE', 'ZAL.DE',
-                         'HEI.DE', 'BAYN.DE', 'SY1.DE', 'HFG.DE', 'MBG.DE', 'HLE.DE', 'BNR.DE', 'TYO.DE' ]
-
-        # Define the ticker symbols for the indices
-        indices_tickers = {
-            "France" : cac40_tickers,
-            "Germany" : ibex35_tickers,
-            "Spain" : dax40_tickers
-        }
-
-        index_tickers = indices_tickers[country]
+        index_tickers = indices_tickers[country][2]
 
         # Create an empty list to hold company information
         company_data = []
@@ -258,14 +238,17 @@ if submit:
         df = df[df["Market Cap"]!="N/A"]
         df["Market Cap"] = pd.to_numeric(df["Market Cap"])
         df = df.sort_values(by="Market Cap", ascending=False)
+        df = df.reset_index(drop=True)
         st.dataframe(df)
         
-        st.write(f"Explanation regarding main stock index in {country} : {indices[country]} (to be developed)")
+        # Stock Index and Industry
+        st.write(f"Explanation regarding main stock index in {country} : {indices[country][0]} (to be developed)")
         
-        
-        index = yf.Ticker(indices[country])
+        index = yf.Ticker(indices[country][1])
         index_data = index.history(period="5y")
         st.line_chart(index_data.Close)
+        
+        # Company Analysis
         
 
         
