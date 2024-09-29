@@ -174,11 +174,11 @@ if submit:
         
         st.write(f"Based on the information provided, you are categorized as a **{profile}** investor. ")
         
-        if profile = "Conservative":
+        if profile == "Conservative":
             st.write(f"Given your **low risk tolerance** and preference for stable returns, with less comfort around volatility, we recommend **focusing more on low-risk instruments** such as  government bonds and limiting your stock investments.")
-        elif profile = "Moderate":
+        elif profile == "Moderate":
             st.write(f"Given your **moderate risk tolerance** and willingness to take on some risk for potential returns, we recommend **a balanced mix of stocks and bonds** in your investment portfolio to better align with your financial goals.")
-        elif profile = "Aggressive":
+        elif profile == "Aggressive":
             st.write(f"As you are willing to **accept greater economic uncertainty** in exchange for the potential of higher returns, we suggest allocating a **significant portion of your investment portfolio to stocks**.")
         
         st.write("The table below provides a general classification of investment instruments based on their risk levels:")
