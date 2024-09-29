@@ -25,7 +25,8 @@ client = gspread.authorize(scoped_credentials)
 sheet = client.open("finall_project").worksheet("visitor")
 
 st.set_page_config(
-    page_title="FinAll"
+    page_title="FinAll",
+    page_icon="https://github.com/amatulghina/finall/blob/master/img/finall-favicon-color.png"
 )
 
 st.write("""
