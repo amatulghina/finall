@@ -172,6 +172,8 @@ if submit:
         
         st.success(f"Thank you {name} for providing your information!")
         
+        st.header("Investment Allocation Recommendation")
+        
         st.write(f"Based on the information provided, you are categorized as a **{profile}** investor. ")
         
         if profile == "Conservative":
@@ -236,6 +238,29 @@ if submit:
             company_name = stock_info.get('longName', 'N/A')  # Company Name
             industry = stock_info.get('industry', 'N/A')      # Industry
             market_cap = stock_info.get('marketCap', 'N/A')   # Market Capitalization
+            def calculate_average_annual_return(ticker):
+                # Download the stock data for the past 5 years (adjustable)
+                stock_data = yf.download(ticker, period="5y", interval="1d")
+
+                # Ensure we're using the 'Adj Close' prices (adjusted for splits/dividends)
+                stock_data['Return'] = stock_data['Adj Close'].pct_change()
+
+                # Resample to get yearly returns, assuming business year frequency
+                yearly_returns = stock_data['Adj Close'].resample('Y').ffill().pct_change()
+
+                # Drop NaN for the first year
+                yearly_returns = yearly_returns.dropna()
+
+                # Calculate the average annual return
+                avg_annual_return = yearly_returns.mean()
+
+                # Format it as percentage
+                avg_annual_return_percentage = avg_annual_return * 100
+
+                return avg_annual_return_percentage
+            
+            average_return = calculate_average_annual_return(ticker)
+            
             try:
                 # Download stock data for the last 5 days
                 stock_data = yf.download(ticker, period='5d')
@@ -248,10 +273,10 @@ if submit:
         
             finally:
                 # Append the data to the list
-                company_data.append([ticker, company_name, industry, market_cap, close_price])
+                company_data.append([ticker, company_name, industry, market_cap, close_price, average_return])
 
         # Create a DataFrame from the list
-        df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price'])
+        df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price (EUR)','Avg. Annual Return (%)'])
 
         df = df[df["Market Cap"]!="N/A"]
         df["Market Cap"] = pd.to_numeric(df["Market Cap"])
