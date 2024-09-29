@@ -258,22 +258,30 @@ if submit:
                 avg_annual_return_percentage = avg_annual_return * 100
 
                 return avg_annual_return_percentage
-            
-            average_return = calculate_average_annual_return(ticker)
-            
+
+            try:
+                stock_data = yf.download(ticker, period="5y", interval="1d")
+
+                if not stock_data.empty:
+                    average_return = calculate_average_annual_return(ticker)
+                else:
+                    average_return = 'N/A'
+            finally:
+                company_data.append([ticker, company_name, industry, market_cap, close_price])
+
             try:
                 # Download stock data for the last 5 days
                 stock_data = yf.download(ticker, period='5d')
-        
+
                 # Get the latest adjusted close price if available
                 if not stock_data.empty:
                     close_price = round(stock_data['Adj Close'][-1],2)
                 else:
                     close_price = 'N/A'
-        
+
             finally:
                 # Append the data to the list
-                company_data.append([ticker, company_name, industry, market_cap, close_price, average_return])
+                company_data.append([average_return])
 
         # Create a DataFrame from the list
         df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price (EUR)','Avg. Annual Return (%)'])
