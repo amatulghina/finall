@@ -201,19 +201,18 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         """)
         
         # Next Section
-        with st.form("User Profile"):
+        with st.form("Next Section"):
             response = st.radio(f"Do you want to know more about stock market index in {country} to build your investment portfolio?", ("Yes", "No"))
             # Submit button
             submit = st.form_submit_button("Submit")
 
-            if st.button("Submit"):
+            if submit:
+                sheet2.append_row(user_id, response)
                 if response == "Yes":
-                    sheet2.append_row(user_id, response)
                     # Redirect to another function or page
                     st.write("Redirecting to Stock Market Index Information Page (to be devloped)")
                     # Call next function
                 else:
-                    sheet2.append_row(user_id, response)
                     st.write("Thank you for visiting our app!")
                     st.stop()  # Stop further execution if No
 
