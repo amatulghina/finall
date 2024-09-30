@@ -209,7 +209,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
                          'BN.PA', 'ACA.PA', 'SGO.PA', 'LR.PA', 'RMS.PA', 'RI.PA', 'SAN.PA', 'AI.PA',
                          'CAP.PA', 'SU.PA', 'DSY.PA', 'EDF.PA', 'VIV.PA', 'KER.PA', 'MC.PA', 'MT.PA',
                          'OR.PA', 'PUB.PA', 'SAF.PA', 'STM.PA', 'FTI.PA', 'DG.PA', 'HO.PA', 'ML.PA',
-                         'FR.PA', 'WLN.PA', 'CS.PA', 'FP.PA', 'TT.PA', 'SG.PA', 'URW.PA', 'VK.PA']],
+                         'FR.PA', 'WLN.PA', 'CS.PA', 'FP.PA', 'TTE.PA', 'SG.PA', 'URW.PA', 'VK.PA']],
             "Germany" : ["DAX 40","^GDAXI",
                          ['ADS.DE','AIR.DE','ALV.DE', 'BAS.DE', 'BAYN.DE', 'BEI.DE', 'BMW.DE', 'CON.DE',
                           '1COV.DE', 'DHER.DE', 'DTE.DE', 'DPW.DE', 'DB1.DE', 'DBK.DE', 'ENR.DE', 'FRE.DE',   
@@ -320,4 +320,6 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         
         # Company Analysis
         st.header("Company Analysis")
-        st.selectbox("Pick one", indices[country][2])
+        ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
+        
+        
