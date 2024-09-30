@@ -31,8 +31,6 @@ company_analysis = st.Page("Company_Analysis.py", title="Company Analysis")
 
 pg = st.navigation([home, company_analysis])
 st.set_page_config(page_title="FinAll")
-pg.run()
-
 
 st.write("""
 # Welcome to FinAll Project!
