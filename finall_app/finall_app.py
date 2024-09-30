@@ -23,6 +23,7 @@ client = gspread.authorize(scoped_credentials)
 
 # Open the Google Sheet by name
 sheet = client.open("finall_project").worksheet("visitor")
+sheet2 = client.open("finall_project").worksheet("stock_index")
 
 st.set_page_config(page_title="FinAll")
 
@@ -195,129 +196,22 @@ if submit:
         
         st.write(f"""
         The **“100 - age rule”** is a popular guideline used in financial planning to roughly guide individuals determine an appropriate **asset allocation** between stocks (or equities) and bonds (or fixed-income investments) based on age. The rule suggests that you should subtract your age from 100 to determine the percentage of your investment portfolio that should be allocated to stocks, with the remaining portion allocated to bonds or other lower-risk assets. \n
-Based on this rule, your investment portfolio may consists of :blue[**{100-age}% in stocks** and **{age}%** in **bonds**]. \n
+Based on this rule, your investment portfolio may consists of :blue[**{100-age}%** in **stocks** and **{age}%** in **bonds**]. \n
 :red[Keep in mind, **before building your investment portfolio**, you should have **established an emergency fund** (typically in forms of basic savings) at least between **3-6 months of living expenses**].
         """)
         
-        st.header(f"Stock Market Index in {country}")
-        
-        # Define the stock market index by country
-        indices = {
-            "France" : ["CAC 40","^FCHI",
-                        ['AIR.PA', 'ALO.PA', 'ORA.PA', 'BNP.PA', 'EN.PA', 'VIE.PA', 'ENGI.PA', 'CA.PA', 
-                         'BN.PA', 'ACA.PA', 'SGO.PA', 'LR.PA', 'RMS.PA', 'RI.PA', 'SAN.PA', 'AI.PA',
-                         'CAP.PA', 'SU.PA', 'DSY.PA', 'EDF.PA', 'VIV.PA', 'KER.PA', 'MC.PA', 'MT.PA',
-                         'OR.PA', 'PUB.PA', 'SAF.PA', 'STM.PA', 'FTI.PA', 'DG.PA', 'HO.PA', 'ML.PA',
-                         'FR.PA', 'WLN.PA', 'CS.PA', 'FP.PA', 'TT.PA', 'SG.PA', 'URW.PA', 'VK.PA']],
-            "Germany" : ["DAX 40","^GDAXI",
-                         ['ADS.DE','AIR.DE','ALV.DE', 'BAS.DE', 'BAYN.DE', 'BEI.DE', 'BMW.DE', 'CON.DE',
-                         '1COV.DE', 'DHER.DE', 'DTE.DE', 'DPW.DE', 'DB1.DE', 'DBK.DE', 'ENR.DE', 'FRE.DE',   
-                         'FME.DE', 'HEN3.DE', 'HNR1.DE', 'IFX.DE', 'LIN.DE', 'MRK.DE', 'MTX.DE', 'MUV2.DE',
-                         'PUM.DE', 'RWE.DE', 'SAP.DE', 'SHL.DE', 'SIE.DE', 'VNA.DE', 'VOW3.DE', 'ZAL.DE',
-                         'HEI.DE', 'BAYN.DE', 'SY1.DE', 'HFG.DE', 'MBG.DE', 'HLE.DE', 'BNR.DE', 'TYO.DE']],
-            "Spain" : ["IBEX 35","^IBEX",
-                      ['ACX.MC', 'ACS.MC', 'AENA.MC', 'ALM.MC', 'AMS.MC', 'ANA.MC', 'BBVA.MC', 'BKT.MC',
-                          'CABK.MC', 'CLNX.MC', 'COL.MC', 'ELE.MC', 'ENG.MC', 'FER.MC', 'GRF.MC', 'IAG.MC',
-                          'IBE.MC', 'ITX.MC','MEL.MC', 'MTS.MC', 'NTGY.MC', 'PHM.MC', 'RED.MC', 'REP.MC', 'ROVI.MC',
-                          'SAB.MC', 'SAN.MC', 'SGRE.MC', 'SLR.MC', 'TEF.MC']]
-        }
-        
-        if country == "France":
-            st.write("""
-            The primary stock market index in France is **CAC 40 (Cotation Assistée en Continu)**. The CAC 40 is a benchmark index that represents the **40 largest publicly traded companies** listed on the **Euronext Paris stock exchange**. \n
-            The index is composed of 40 companies that are chosen based on their market capitalization, liquidity, and other factors. The companies span **various sectors**, including finance, technology, healthcare, consumer goods, and energy. \n
-            The CAC 40 is widely regarded as one of the **key indicator** of the **French economy**. A rising CAC 40 typically suggests investor confidence and economic growth, while a declining index may indicate economic challenges.
-            """)
-        elif country == "Spain":
-            st.write("""
-            The primary stock market index in Spain is **IBEX 35 (Índice Bursátil Español)**. The IBEX 35 is a benchmark index that includes the **35 largest companies** listed on the **Madrid Stock Exchange**. \n
-            The index comprises 35 companies selected based on criteria such as market capitalization, liquidity, and sector representation. These companies are from **various sectors**, including finance, energy, telecommunications, and consumer goods. \n
-            The IBEX 35 is widely regarded as one of the **key indicator** of the **Spanish economy**. An increase in the index generally indicates investor confidence and economic growth, while a decrease may signal economic challenges or instability.
-            """)
-        elif country == "Germany":
-            st.write("""
-            The primary stock market index in Germany is **DAX 40 (Deutscher Aktienindex)**. The DAX 40 is a stock market index that represents the **40 largest publicly traded companies** listed on the Frankfurt Stock Exchange. \n
-            Originally comprising 30 companies, the DAX index was expanded to include 40 companies in September 2021. The constituents are selected based on their market capitalization and liquidity. These companies span **various sectors**, including automotive, pharmaceuticals, finance, technology, and consumer goods. \n
-            The DAX 40 is widely regarded as one of the **key indicator** of the **German economy**. A rising DAX suggests investor confidence and positive economic conditions, while a declining DAX may indicate economic concerns.
-            """)
-            
-        # Stock Index and Industry
-        st.subheader(f"{indices[country][0]} Performance Index")
-        index = yf.Ticker(indices[country][1])
-        index_data = index.history(period="5y")
-        st.line_chart(index_data.Close)
-        
-        st.write("Here is the list of company:")
+        # Next Section
+        response = st.radio(f"Do you want to know more about stock market index in {country} to build your investment portfolio?", ("Yes", "No"))
 
-        index_tickers = indices[country][2]
+        if st.button("Submit"):
+            if response == "Yes":
+                sheet2.append_row(user_id, response)
+                # Redirect to another function or page
+                st.write("Redirecting to Stock Market Index Information Page (to be devloped)")
+                # Call next function
+            else:
+                sheet2.append_row(user_id, response)
+                st.write("Thank you for visiting our app!")
+                st.stop()  # Stop further execution if No
 
-        # Create an empty list to hold company information
-        company_data = []
-
-        # Loop through each ticker and fetch the required data
-        for ticker in index_tickers:
-            stock = yf.Ticker(ticker)
-
-            # Get the stock info for each company
-            stock_info = stock.info
-
-            # Extract relevant information
-            company_name = stock_info.get('longName', 'N/A')  # Company Name
-            industry = stock_info.get('industry', 'N/A')      # Industry
-            market_cap = stock_info.get('marketCap', 'N/A')   # Market Capitalization
-            def calculate_average_annual_return(ticker):
-                # Download the stock data for the past 5 years (adjustable)
-                stock_data = yf.download(ticker, period="5y", interval="1d")
-
-                # Ensure we're using the 'Adj Close' prices (adjusted for splits/dividends)
-                stock_data['Return'] = stock_data['Adj Close'].pct_change()
-
-                # Resample to get yearly returns, assuming business year frequency
-                yearly_returns = stock_data['Adj Close'].resample('Y').ffill().pct_change()
-
-                # Drop NaN for the first year
-                yearly_returns = yearly_returns.dropna()
-
-                # Calculate the average annual return
-                avg_annual_return = yearly_returns.mean()
-
-                # Format it as percentage
-                avg_annual_return_percentage = round(avg_annual_return * 100,2)
-
-                return avg_annual_return_percentage
-
-            try:
-                # Download stock data for the last 5 days
-                stock_data = yf.download(ticker, period="5y", interval="1d")
-
-                # Get the latest adjusted close price if available
-                if not stock_data.empty:
-                    close_price = round(stock_data['Adj Close'][-1],2)
-                    average_return = calculate_average_annual_return(ticker)
-                else:
-                    close_price = 'N/A'
-                    average_return = 'N/A'
-
-            finally:
-                # Append the data to the list
-                company_data.append([ticker, company_name, industry, market_cap, close_price, average_return])
-
-        # Create a DataFrame from the list
-        df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price (EUR)','Avg. Annual Return (%)'])
-
-        df = df[df["Market Cap"]!="N/A"]
-        df["Market Cap"] = pd.to_numeric(df["Market Cap"])
-        df = df.sort_values(by="Market Cap", ascending=False)
-        df = df.reset_index(drop=True)
-        st.dataframe(df, hide_index=True)
-
-        # Company Analysis
-        st.header("Company Analysis")
-        st.selectbox("Pick one", indices[country][2])
-        
-        
-
-        
-        
-        
         
