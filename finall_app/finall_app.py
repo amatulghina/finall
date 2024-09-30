@@ -23,6 +23,7 @@ client = gspread.authorize(scoped_credentials)
 
 # Open the Google Sheet by name
 sheet = client.open("finall_project").worksheet("visitor")
+sheet2 = client.open("finall_project").worksheet("stock_index")
 
 st.set_page_config(page_title="FinAll")
 
@@ -136,7 +137,7 @@ if submit:
 
             # Get the last row's ID
             last_row = records[-1]
-            last_id = last_row.get("ID")  # Assumes 'ID' is the column header for the ID field
+            last_id = last_row.get("user_id")  # Assumes 'ID' is the column header for the ID field
 
             # Increment the last ID
             next_id = int(last_id) + 1
@@ -204,7 +205,6 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
 
         if st.button("Submit"):
             if response == "Yes":
-                sheet2 = client.open("finall_project").worksheet("stock_index")
                 sheet2.append_row(user_id, response)
                 # Redirect to another function or page
                 st.write("Redirecting to Stock Market Index Information Page (to be devloped)")
