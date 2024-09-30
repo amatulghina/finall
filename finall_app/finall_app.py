@@ -51,10 +51,10 @@ Please fill the form below:
 
 with st.form("User Profile"):
     st.header("User Profile Information")
-    country = st.selectbox("Country (Required)", ["France", "Germany", "Spain"])
+    country = st.selectbox("Country (Required)", ["France", "Germany", "Spain"], index=None, placeholder="Select your country")
     name = st.text_input("Name")
-    age = st.number_input("Age (Required)", min_value=15, max_value=100)
-    gender = st.selectbox("Gender (Required)", ["Male", "Female", "Other"])
+    age = st.number_input("Age (Required)")
+    gender = st.selectbox("Gender (Required)", ["Male", "Female", "Other"], index=None)
     
     # Risk Profiling Section
     st.header("Risk Profiling Questionnaire")
