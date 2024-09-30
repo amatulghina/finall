@@ -248,7 +248,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         index_data = index.history(period="5y")
         st.line_chart(index_data.Close)
 
-        st.write("Here is the list of company:")
+        st.write(f"Here is the list of companies that make up the {indices[country][0]} index along with the current value of Market Capitalization, Price and Average Annual Return over the past five years.")
 
         index_tickers = indices[country][2]
 
