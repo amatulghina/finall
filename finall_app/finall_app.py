@@ -214,6 +214,5 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
                     # Call next function
                 else:
                     st.write("Thank you for visiting our app!")
-                    st.stop()  # Stop further execution if No
 
         
