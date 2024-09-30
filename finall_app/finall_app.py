@@ -216,3 +216,4 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
                 st.write("Thank you for visiting our app!")
 
         
+st.write("Thank you for visiting our app!")
