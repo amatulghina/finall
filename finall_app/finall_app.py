@@ -186,7 +186,7 @@ if submit:
         
         type_instruments = {
             'Risk Level': ["Low","Moderate","High"],
-            'Example of Investing Instruments': ['Government Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
+            'Example of Investing Instruments': ['Government Bonds \n High-quality Corporate Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
             'Description': ['Lower returns but are stable and less prone to volatility.','A balance of safety and growth.','Potential for high returns but also high volatility and risk.']
         }
         
@@ -194,8 +194,8 @@ if submit:
         st.dataframe(inv_instruments, hide_index=True)
         
         st.write(f"""
-        The **“100 - age rule”** is a popular guideline used in financial planning to roughly guide individuals determine an appropriate **asset allocation** between stocks (or equities) and bonds (or fixed-income investments) based on age. The rule suggests that you should subtract your age from 100 to determine the percentage of your investment portfolio that should be allocated to stocks, with the remaining portion allocated to bonds or other lower-risk assets. /n
-Based on this rule, **{100-age}%** of your portfolio should be in **stocks**, and **{age}%** in **bonds**. /n
+        The **“100 - age rule”** is a popular guideline used in financial planning to roughly guide individuals determine an appropriate **asset allocation** between stocks (or equities) and bonds (or fixed-income investments) based on age. The rule suggests that you should subtract your age from 100 to determine the percentage of your investment portfolio that should be allocated to stocks, with the remaining portion allocated to bonds or other lower-risk assets. \n
+Based on this rule, **{100-age}%** of your portfolio should be in **stocks**, and **{age}%** in **bonds**. \n
 Keep in mind, **before building your investment portfolio**, you should have **established an emergency fund** (typically in forms of basic savings) at least between **3-6 months of living expenses**.
         """)
         
