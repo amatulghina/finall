@@ -207,7 +207,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
             submit2 = st.form_submit_button("Submit")
 
         if submit2:
-            sheet2.append_row(user_id, response)
+            sheet.append_row(user_id, response)
             if response == "Yes":
                 # Redirect to another function or page
                 st.write("Redirecting to Stock Market Index Information Page (to be devloped)")
