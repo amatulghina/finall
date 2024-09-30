@@ -248,7 +248,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         index_data = index.history(period="5y")
         st.line_chart(index_data.Close)
 
-        st.write(f"Here is the list of companies that make up the {indices[country][0]} index along with the current value of Market Capitalization, Price and Average Annual Return over the past five years.")
+        st.write(f"Here is the list of companies that make up the {indices[country][0]} index along with the current value of **Market Capitalization**, **Price** and **Average Annual Return**.")
 
         index_tickers = indices[country][2]
 
@@ -304,14 +304,20 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
                 company_data.append([ticker, company_name, industry, market_cap, close_price, average_return])
 
         # Create a DataFrame from the list
-        df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price (EUR)','Avg. Annual Return (%)'])
+        df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price','Avg. Annual Return (%)'])
 
         df = df[df["Market Cap"]!="N/A"]
         df["Market Cap"] = pd.to_numeric(df["Market Cap"])
         df = df.sort_values(by="Market Cap", ascending=False)
         df = df.reset_index(drop=True)
         st.dataframe(df, hide_index=True)
-
+        
+        st.write(f"""
+        **Market Capitalization** = The total market value of a company's outstanding shares of stock. It is calculated by multiplying the current stock price by the total number of a company's outstanding shares. \n
+        **Price** = Latest adjusted close price in EUR. \n
+        **Average Annual Return (%)** = Average annual return over the past 5 years. Annual return is defined as percentage change in price at the end of the year.
+        """)
+        
         # Company Analysis
         st.header("Company Analysis")
         st.selectbox("Pick one", indices[country][2])
