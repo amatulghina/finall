@@ -265,7 +265,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
             # Extract relevant information
             company_name = stock_info.get('longName', 'N/A')  # Company Name
             industry = stock_info.get('industry', 'N/A')      # Industry
-            market_cap = stock_info.get('marketCap', 'N/A')   # Market Capitalization
+            market_cap = stock_info.get('marketCap', '')   # Market Capitalization
             def calculate_average_annual_return(ticker):
                 # Download the stock data for the past 5 years (adjustable)
                 stock_data = yf.download(ticker, period="5y", interval="1d")
@@ -296,8 +296,8 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
                     close_price = round(stock_data['Adj Close'][-1],2)
                     average_return = calculate_average_annual_return(ticker)
                 else:
-                    close_price = 'N/A'
-                    average_return = 'N/A'
+                    close_price = ''
+                    average_return = ''
 
             finally:
                 # Append the data to the list
@@ -307,9 +307,9 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price','Avg. Annual Return (%)'])
 
         #df = df[df["Market Cap"]!="N/A"]
-        #df["Market Cap"] = pd.to_numeric(df["Market Cap"])
-        #df = df.sort_values(by="Market Cap", ascending=False)
-        #df = df.reset_index(drop=True)
+        df["Market Cap"] = pd.to_numeric(df["Market Cap"])
+        df = df.sort_values(by="Market Cap", ascending=False)
+        df = df.reset_index(drop=True)
         st.dataframe(df, hide_index=True)
         
         st.write(f"""
