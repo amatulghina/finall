@@ -212,7 +212,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
                 # Redirect to another function or page
                 st.write("Redirecting to Stock Market Index Information Page (to be devloped)")
                 # Call next function
-            else:
+            elif response == "No":
                 st.write("Thank you for visiting our app!")
 
         
