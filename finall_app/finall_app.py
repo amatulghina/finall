@@ -186,14 +186,22 @@ if submit:
         
         type_instruments = {
             'Risk Level': ["Low","Moderate","High"],
-            'Example of Investing Instruments': ['Government Bonds /n High-Quality Corporate Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
+            'Example of Investing Instruments': ['Government Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
             'Description': ['Lower returns but are stable and less prone to volatility.','A balance of safety and growth.','Potential for high returns but also high volatility and risk.']
         }
         
         inv_instruments = pd.DataFrame(type_instruments)
         st.dataframe(inv_instruments, hide_index=True)
         
-        st.write("Investment allocation recommendation (still being developed)")
+        st.write(f"""
+        The “100 - age rule” is a popular guideline used in financial planning to roughly guide individuals determine an appropriate asset allocation between stocks (or equities) and bonds (or fixed-income investments) based on age.
+
+The reasoning behind this rule is younger individuals typically have a longer investment horizon, which allows them to take on more risk and benefit from the higher potential returns of stocks. Over time, the stock market tends to recover from downturns, so younger investors have more time to weather market volatility.
+
+Based on this rule, **{100-age}%** of your portfolio should be in **stocks**, and **{age}%** in **bonds**.
+
+Keep in mind, **before building your investment portfolio**, you should have **established an emergency fund** (typically in forms of basic savings) at least between **3-6 months of living expenses**.
+        """)
         
         st.header(f"Stock Market Index in {country}")
         
