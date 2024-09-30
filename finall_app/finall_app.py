@@ -186,7 +186,7 @@ if submit:
         
         type_instruments = {
             'Risk Level': ["Low","Moderate","High"],
-            'Example of Investing Instruments': ['Government Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
+            'Example of Investing Instruments': ['Government Bonds /n High-Quality Corporate Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
             'Description': ['Lower returns but are stable and less prone to volatility.','A balance of safety and growth.','Potential for high returns but also high volatility and risk.']
         }
         
@@ -306,11 +306,12 @@ if submit:
         df = df.sort_values(by="Market Cap", ascending=False)
         df = df.reset_index(drop=True)
         st.dataframe(df, hide_index=True)
-        
 
         # Company Analysis
         st.header("Company Analysis")
         st.selectbox("Pick one", indices[country][2])
+        
+        
 
         
         
