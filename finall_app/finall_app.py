@@ -237,7 +237,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
                     """)
         elif country == "Germany":
             st.write("""
-            The primary stock market index in Germany is **DAX 40 (Deutscher Aktienindex)**. The DAX 40 is a stock market index that represents the **40 largest publicly traded companies** listed on the Frankfurt Stock Exchange. \n
+            The primary stock market index in Germany is **DAX 40 (Deutscher Aktienindex)**. The DAX 40 is a stock market index that represents the **40 largest publicly traded companies** listed on the **Frankfurt Stock Exchange**. \n
             Originally comprising 30 companies, the DAX index was expanded to include 40 companies in September 2021. The constituents are selected based on their market capitalization and liquidity. These companies span **various sectors**, including automotive, pharmaceuticals, finance, technology, and consumer goods. \n
             The DAX 40 is widely regarded as one of the **key indicator** of the **German economy**. A rising DAX suggests investor confidence and positive economic conditions, while a declining DAX may indicate economic concerns.
                     """)
@@ -321,5 +321,6 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         # Company Analysis
         st.header("Company Analysis")
         ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
+        print(ticker)
         
         
