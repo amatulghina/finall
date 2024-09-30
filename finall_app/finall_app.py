@@ -194,12 +194,8 @@ if submit:
         st.dataframe(inv_instruments, hide_index=True)
         
         st.write(f"""
-        The “100 - age rule” is a popular guideline used in financial planning to roughly guide individuals determine an appropriate asset allocation between stocks (or equities) and bonds (or fixed-income investments) based on age.
-
-The reasoning behind this rule is younger individuals typically have a longer investment horizon, which allows them to take on more risk and benefit from the higher potential returns of stocks. Over time, the stock market tends to recover from downturns, so younger investors have more time to weather market volatility.
-
-Based on this rule, **{100-age}%** of your portfolio should be in **stocks**, and **{age}%** in **bonds**.
-
+        The **“100 - age rule”** is a popular guideline used in financial planning to roughly guide individuals determine an appropriate **asset allocation** between stocks (or equities) and bonds (or fixed-income investments) based on age. The rule suggests that you should subtract your age from 100 to determine the percentage of your investment portfolio that should be allocated to stocks, with the remaining portion allocated to bonds or other lower-risk assets. /n
+Based on this rule, **{100-age}%** of your portfolio should be in **stocks**, and **{age}%** in **bonds**. /n
 Keep in mind, **before building your investment portfolio**, you should have **established an emergency fund** (typically in forms of basic savings) at least between **3-6 months of living expenses**.
         """)
         
