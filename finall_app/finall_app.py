@@ -306,10 +306,10 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         # Create a DataFrame from the list
         df = pd.DataFrame(company_data, columns=['Ticker', 'Company Name', 'Industry', 'Market Cap', 'Price','Avg. Annual Return (%)'])
 
-        df = df[df["Market Cap"]!="N/A"]
-        df["Market Cap"] = pd.to_numeric(df["Market Cap"])
-        df = df.sort_values(by="Market Cap", ascending=False)
-        df = df.reset_index(drop=True)
+        #df = df[df["Market Cap"]!="N/A"]
+        #df["Market Cap"] = pd.to_numeric(df["Market Cap"])
+        #df = df.sort_values(by="Market Cap", ascending=False)
+        #df = df.reset_index(drop=True)
         st.dataframe(df, hide_index=True)
         
         st.write(f"""
