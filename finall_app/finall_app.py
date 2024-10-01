@@ -332,39 +332,21 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
 """)
         ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
     
-        company = yf.Ticker(ticker)
         
-        # Income Statement
-        income_stmt = company.income_stmt.reset_index()
-        income_stmt.columns = ['Income Statement','2023','2022','2021','2020','2019']
-        income_stmt=income_stmt[['Income Statement','2023','2022','2021','2020']]
-        list_income_stmt = ['Total Revenue','Cost of Revenue','Gross Profit','Operating Income','Net Income','Diluted EPS']
-        income_stmt = income_stmt[income_stmt['Income Statement'].isin(list_income_stmt)]
-        income_stmt[['2023','2022','2021','2020']] = income_stmt[['2023','2022','2021','2020']].astype(float) 
-        income_stmt['Income Statement'] = pd.Categorical(income_stmt['Income Statement'], categories=list_income_stmt, ordered=True)
-        income_stmt = income_stmt.sort_values('Income Statement')
-        income_stmt.reset_index(drop=True, inplace=True)
+        def income_statement(ticker):
+            # Income Statement
+            company = yf.Ticker(ticker)
+            income_stmt = company.income_stmt.reset_index()
+            income_stmt.columns = ['Income Statement','2023','2022','2021','2020','2019']
+            income_stmt=income_stmt[['Income Statement','2023','2022','2021','2020']]
+            list_income_stmt = ['Total Revenue','Cost of Revenue','Gross Profit','Operating Income','Net Income','Diluted EPS']
+            income_stmt = income_stmt[income_stmt['Income Statement'].isin(list_income_stmt)]
+            income_stmt[['2023','2022','2021','2020']] = income_stmt[['2023','2022','2021','2020']].astype(float) 
+            income_stmt['Income Statement'] = pd.Categorical(income_stmt['Income Statement'], categories=list_income_stmt, ordered=True)
+            income_stmt = income_stmt.sort_values('Income Statement')
+            income_stmt.reset_index(drop=True, inplace=True)
+            return income_stmt
+        
+        income_stmt = income_statement(ticker)
         st.dataframe(income_stmt, hide_index=True)
         
-        # Balance Sheet
-        balance_sheet = company.balance_sheet.reset_index()
-        balance_sheet.columns = ['Balance Sheet','2023','2022','2021','2020','2019']
-        balance_sheet=balance_sheet[['Balance Sheet','2023','2022','2021','2020']]
-        list_balance_sheet = ['Current Assets','Total Assets','Current Liabilities','Long Term Debt And Capital Lease Obligation','Stockholders Equity']
-        balance_sheet = balance_sheet[balance_sheet['Balance Sheet'].isin(list_balance_sheet)]
-        balance_sheet[['2023','2022','2021','2020']] = balance_sheet[['2023','2022','2021','2020']].astype(float) 
-        balance_sheet['Balance Sheet'] = pd.Categorical(balance_sheet['Balance Sheet'], categories=list_balance_sheet, ordered=True)
-        balance_sheet = balance_sheet.sort_values('Balance Sheet')
-        balance_sheet.reset_index(drop=True, inplace=True)
-        balance_sheet['Balance Sheet'] = balance_sheet['Balance Sheet'].replace('Long Term Debt And Capital Lease Obligation', 'Long Term Debt')
-        
-        # Cash Flow
-        cash_flow = company.cashflow.reset_index()
-        cash_flow.columns = ['Cash Flow','2023','2022','2021','2020','2019']
-        cash_flow=cash_flow[['Cash Flow','2023','2022','2021','2020']]
-        list_cash_flow = ['Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Free Cash Flow']
-        cash_flow = cash_flow[cash_flow['Cash Flow'].isin(list_cash_flow)]
-        cash_flow[['2023','2022','2021','2020']] = cash_flow[['2023','2022','2021','2020']].astype(float) 
-        cash_flow['Cash Flow'] = pd.Categorical(cash_flow['Cash Flow'], categories=list_cash_flow, ordered=True)
-        cash_flow = cash_flow.sort_values('Cash Flow')
-        cash_flow.reset_index(drop=True, inplace=True)
