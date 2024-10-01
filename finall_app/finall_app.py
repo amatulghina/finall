@@ -208,20 +208,6 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
 :red[Keep in mind, **before building your investment portfolio**, you should have **established an emergency fund** (typically in forms of basic savings) at least between **3-6 months of living expenses**].
         """)
         
-        # Next Section
-        with st.form("Next Section"):
-            response = st.radio(f"Do you want to know more about stock market index in {country} to build your investment portfolio?", ("Yes", "No"))
-            # Submit button
-            submit2 = st.form_submit_button("Submit")
-
-        if submit2:
-            sheet2.append_row(user_id, response)
-            if response == "Yes":
-                # Redirect to another function or page
-                st.write("Redirecting to Stock Market Index Information Page (to be devloped)")
-                # Call next function
-            elif response == "No":
-                st.write("Thank you for visiting our app!")
         
         st.header(f"Stock Market Index in {country}")
         
@@ -344,11 +330,11 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         st.write("""
 # Company Analysis
 """)
-
-        country = st.selectbox("Country", ["France", "Germany", "Spain"])
         ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
     
         company = yf.Ticker(ticker)
+        
+        # Income Statement
         income_stmt = company.income_stmt.reset_index()
         income_stmt.columns = ['Income Statement','2023','2022','2021','2020','2019']
         income_stmt=income_stmt[['Income Statement','2023','2022','2021','2020']]
@@ -360,4 +346,25 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         income_stmt.reset_index(drop=True, inplace=True)
         st.dataframe(income_stmt, hide_index=True)
         
+        # Balance Sheet
+        balance_sheet = company.balance_sheet.reset_index()
+        balance_sheet.columns = ['Balance Sheet','2023','2022','2021','2020','2019']
+        balance_sheet=balance_sheet[['Balance Sheet','2023','2022','2021','2020']]
+        list_balance_sheet = ['Current Assets','Total Assets','Current Liabilities','Long Term Debt And Capital Lease Obligation','Stockholders Equity']
+        balance_sheet = balance_sheet[balance_sheet['Balance Sheet'].isin(list_balance_sheet)]
+        balance_sheet[['2023','2022','2021','2020']] = balance_sheet[['2023','2022','2021','2020']].astype(float) 
+        balance_sheet['Balance Sheet'] = pd.Categorical(balance_sheet['Balance Sheet'], categories=list_balance_sheet, ordered=True)
+        balance_sheet = balance_sheet.sort_values('Balance Sheet')
+        balance_sheet.reset_index(drop=True, inplace=True)
+        balance_sheet['Balance Sheet'] = balance_sheet['Balance Sheet'].replace('Long Term Debt And Capital Lease Obligation', 'Long Term Debt')
         
+        # Cash Flow
+        cash_flow = company.cashflow.reset_index()
+        cash_flow.columns = ['Cash Flow','2023','2022','2021','2020','2019']
+        cash_flow=cash_flow[['Cash Flow','2023','2022','2021','2020']]
+        list_cash_flow = ['Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Free Cash Flow']
+        cash_flow = cash_flow[cash_flow['Cash Flow'].isin(list_cash_flow)]
+        cash_flow[['2023','2022','2021','2020']] = cash_flow[['2023','2022','2021','2020']].astype(float) 
+        cash_flow['Cash Flow'] = pd.Categorical(cash_flow['Cash Flow'], categories=list_cash_flow, ordered=True)
+        cash_flow = cash_flow.sort_values('Cash Flow')
+        cash_flow.reset_index(drop=True, inplace=True)
