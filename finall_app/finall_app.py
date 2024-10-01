@@ -339,8 +339,26 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         st.write("""
 # Company Analysis
 """)
-    
-        ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2], key='ticker')
+        # Callback function to handle selectbox changes
+        def on_selectbox_change():
+            st.session_state['selection_changed'] = True
+
+        # Initialize session state variables if they do not exist
+        if 'selectbox_value' not in st.session_state:
+            st.session_state['selectbox_value'] = 'Option 1'
+        if 'selection_changed' not in st.session_state:
+            st.session_state['selection_changed'] = False
+
+        # Display the selectbox with a callback
+        st.selectbox(
+            "Select one of the company in the list to be analysed:",
+            options=indices[country][2],
+            index=indices[country][2].index(st.session_state.selectbox_value),
+            key="selectbox_value",
+            on_change=on_selectbox_change
+        )
+        
+        #ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2], key='ticker')
         
         #with st.form("Company"):
         #   ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
