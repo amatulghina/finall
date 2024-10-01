@@ -33,7 +33,7 @@ sheet2 = client.open("finall_project").worksheet("stock_index")
 st.set_page_config(page_title="FinAll")
 #pg.run()
 
-st.image("../img/finall-high-resolution-logo-transparent.png")
+st.image("https://github.com/amatulghina/finall/blob/master/img/finall-high-resolution-logo-transparent.png")
 
 
 st.write("""
