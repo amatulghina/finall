@@ -89,6 +89,8 @@ if submit:
     # Check if all required fields are filled
     if not age:
         st.warning("Please fill in your age.")
+    elif not country:
+        st.warning("Please fill in your country.")
     elif not gender:
         st.warning("Please fill in your gender.")
     
