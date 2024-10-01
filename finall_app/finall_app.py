@@ -330,13 +330,13 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         st.write("""
 # Company Analysis
 """)
-        with st.form("User Profile"):
+        with st.form("Company"):
             ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
             # Submit button
-            submit = st.form_submit_button("Submit")
+            submit2 = st.form_submit_button("Submit")
     
         # Logic after form submission
-        if submit:
+        if submit2:
             def income_statement(ticker):
                 # Income Statement
                 company = yf.Ticker(ticker)
