@@ -41,9 +41,9 @@ st.write("""
 st.write("""
 As we progress through various stages of life, our needs and goals naturally evolve. It’s crucial to have extra resources available to cushion the impact of economic downturns or unexpected financial shocks, such as job loss, car accidents, divorce, or the death of a spouse. Through careful financial planning, we can navigate difficult times and thrive during prosperous periods. Preparing in advance, such as by setting up an emergency fund or building a savings and investment portfolio, helps safeguard both ourselves and our families from financial setbacks.
 
-Despite the historical evidence that stock markets generate superior long-term returns compared to other financial instruments such as bonds and savings accounts, individual and household participation in stock markets remains low in many European countries (ie., 23%, 13%, and 13% for Germany, France and Spain, respectively). Research shows that financial literacy is one of significant factor to the reluctancy of individuals to invest in the stock market.
+Despite the historical evidence that stock markets generate superior long-term returns compared to other financial instruments such as bonds and savings accounts, individual participation in stock markets remains low in many European countries (ie., 23%, 13%, and 13% for Germany, France and Spain, respectively). Research shows that financial literacy is one of significant factor to the reluctancy of individuals to invest in the stock market.
 
-This platform is built to increase financial literacy in stock market from personal finance perspective.
+This platform is built to increase financial literacy in the stock market.
 
 In order to give you personalized financial advice, we would like to know you more. Please fill the form below:
 
@@ -354,6 +354,8 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
 
             income_stmt = income_statement(ticker)
             st.dataframe(income_stmt, hide_index=True)
-            
+        else: 
+            income_stmt = income_statement(ticker)
+            st.dataframe(income_stmt, hide_index=True)
 
         
