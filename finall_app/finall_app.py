@@ -339,7 +339,8 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         st.write("""
 # Company Analysis
 """)
-        ticker = st.text_input("Insert company's ticker", "MC.PA")
+    
+        ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2], key='ticker')
         
         #with st.form("Company"):
         #   ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
