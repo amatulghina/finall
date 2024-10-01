@@ -345,7 +345,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
 
         # Initialize session state variables if they do not exist
         if 'selectbox_value' not in st.session_state:
-            st.session_state['selectbox_value'] = 'Option 1'
+            st.session_state['selectbox_value'] = indices[country][2][0]
         if 'selection_changed' not in st.session_state:
             st.session_state['selection_changed'] = False
 
