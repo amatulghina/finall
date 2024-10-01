@@ -350,7 +350,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
             st.session_state['selection_changed'] = False
 
         # Display the selectbox with a callback
-        st.selectbox(
+        ticker = st.selectbox(
             "Select one of the company in the list to be analysed:",
             indices[country][2],
             key="selectbox_value",
