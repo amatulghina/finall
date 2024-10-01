@@ -49,41 +49,41 @@ Please fill the form below:
 
 """)
 
-with st.form("User Profile"):
-    st.header("User Profile Information")
-    country = st.selectbox("Country (Required)", ["France", "Germany", "Spain"], index=None, placeholder="Select your country",)
-    name = st.text_input("Name")
-    age = st.number_input("Age (Required)", min_value=15, max_value=100)
-    gender = st.selectbox("Gender (Required)", ["Male", "Female", "Other"], index=None)
-    
-    # Risk Profiling Section
-    st.header("Risk Profiling Questionnaire")
-    # Risk Needs
-    q1 = st.radio("What is the primary goal for your investment?", 
-                  ["Capital preservation", "Moderate capital growth", "High capital growth"])
-    q2 = st.radio("What is your expected investment time horizon?", 
-                  ["Less than 5 years", "5-10 years", "More than 10 years"])
-    q3 = st.radio("What annual return do you expect from your investments?", 
-                  ["3-5%", "5-10%", "More than 10%"])
+st.form("User Profile"):
+st.header("User Profile Information")
+country = st.selectbox("Country (Required)", ["France", "Germany", "Spain"], index=None, placeholder="Select your country",)
+name = st.text_input("Name")
+age = st.number_input("Age (Required)", min_value=15, max_value=100)
+gender = st.selectbox("Gender (Required)", ["Male", "Female", "Other"], index=None)
 
-    # Risk-Taking Ability
-    q4 = st.radio("What is your current annual income compared to your necessary living expenses?", 
-                  ["Income is just sufficient", "Income exceeds expenses slightly", "Income greatly exceeds expenses"])
-    q5 = st.radio("How would you describe your current savings?", 
-                  ["Little to no savings", "Modest savings", "Significant savings"])
-    q6 = st.radio("How secure is your primary source of income?", 
-                  ["Not very stable", "Somewhat stable", "Very stable"])
+# Risk Profiling Section
+st.header("Risk Profiling Questionnaire")
+# Risk Needs
+q1 = st.radio("What is the primary goal for your investment?", 
+              ["Capital preservation", "Moderate capital growth", "High capital growth"])
+q2 = st.radio("What is your expected investment time horizon?", 
+              ["Less than 5 years", "5-10 years", "More than 10 years"])
+q3 = st.radio("What annual return do you expect from your investments?", 
+              ["3-5%", "5-10%", "More than 10%"])
 
-    # Behavioral Loss Tolerance
-    q7 = st.radio("If the value of your investment dropped by 10%, what would you do?", 
-                  ["Sell immediately", "Do nothing", "Buy more"])
-    q8 = st.radio("How would you feel if your portfolio lost 20% in 6 months?", 
-                  ["Very uncomfortable", "Somewhat uncomfortable", "Comfortable"])
-    q9 = st.radio("How much risk are you willing to take for higher returns?", 
-                  ["Minimize risk", "Moderate risk", "High risk"])
+# Risk-Taking Ability
+q4 = st.radio("What is your current annual income compared to your necessary living expenses?", 
+              ["Income is just sufficient", "Income exceeds expenses slightly", "Income greatly exceeds expenses"])
+q5 = st.radio("How would you describe your current savings?", 
+              ["Little to no savings", "Modest savings", "Significant savings"])
+q6 = st.radio("How secure is your primary source of income?", 
+              ["Not very stable", "Somewhat stable", "Very stable"])
 
-    # Submit button
-    submit = st.form_submit_button("Submit")
+# Behavioral Loss Tolerance
+q7 = st.radio("If the value of your investment dropped by 10%, what would you do?", 
+              ["Sell immediately", "Do nothing", "Buy more"])
+q8 = st.radio("How would you feel if your portfolio lost 20% in 6 months?", 
+              ["Very uncomfortable", "Somewhat uncomfortable", "Comfortable"])
+q9 = st.radio("How much risk are you willing to take for higher returns?", 
+              ["Minimize risk", "Moderate risk", "High risk"])
+
+# Submit button
+submit = st.form_submit_button("Submit")
     
 # Logic after form submission
 if submit:
