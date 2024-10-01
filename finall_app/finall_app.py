@@ -331,7 +331,6 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
 # Company Analysis
 """)
         ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
-    
         
         def income_statement(ticker):
             # Income Statement
@@ -348,5 +347,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
             return income_stmt
         
         income_stmt = income_statement(ticker)
-        st.dataframe(income_stmt, hide_index=True)
+        show = st.dataframe(income_stmt, hide_index=True)
+        st.button("Submit", on_click=show)
+
         
