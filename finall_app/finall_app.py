@@ -331,11 +331,12 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         st.write("""
 # Company Analysis
 """)
+        ticker = st.text_input("Insert company's ticker", "MC.PA")
         
-        with st.form("Company"):
-            ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
-            # Submit button
-            submit2 = st.form_submit_button("Submit")
+        #with st.form("Company"):
+        #   ticker = st.selectbox("Select one of the company in the list to be analysed:", indices[country][2])
+        #    # Submit button
+        #    submit2 = st.form_submit_button("Submit")
         
         def income_statement(ticker):
             # Income Statement
@@ -351,7 +352,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
             income_stmt.reset_index(drop=True, inplace=True)
             return income_stmt
         
-        if submit2:
-            income_stmt = income_statement(ticker)
-            st.dataframe(income_stmt, hide_index=True)
+        
+        income_stmt = income_statement(ticker)
+        st.dataframe(income_stmt, hide_index=True)
         
