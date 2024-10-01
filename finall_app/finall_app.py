@@ -349,7 +349,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
             income_stmt['Income Statement'] = pd.Categorical(income_stmt['Income Statement'], categories=list_income_stmt, ordered=True)
             income_stmt = income_stmt.sort_values('Income Statement')
             income_stmt.reset_index(drop=True, inplace=True)
-                return income_stmt
+            return income_stmt
         
         if submit2:
             income_stmt = income_statement(ticker)
