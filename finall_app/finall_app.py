@@ -195,7 +195,7 @@ if submit:
         
         type_instruments = {
             'Risk Level': ["Low","Moderate","High"],
-            'Example of Investing Instruments': ['Government Bonds \n High-quality Corporate Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
+            'Example of Investing Instruments': ['Government Bonds',"Balanced mutual funds (bonds & stocks)",'Stocks'],
             'Description': ['Lower returns but are stable and less prone to volatility.','A balance of safety and growth.','Potential for high returns but also high volatility and risk.']
         }
         
