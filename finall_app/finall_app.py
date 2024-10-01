@@ -26,13 +26,12 @@ sheet = client.open("finall_project").worksheet("visitor")
 sheet2 = client.open("finall_project").worksheet("stock_index")
 
 # Define Multipage Apps
-home = st.Page("finall_app.py", title="Home")
-company_analysis = st.Page("Company_Analysis.py", title="Company Analysis")
+#home = st.Page("finall_app.py", title="Home")
+#company_analysis = st.Page("Company_Analysis.py", title="Company Analysis")
 
-pg = st.navigation([home, company_analysis])
+#pg = st.navigation([home, company_analysis])
 st.set_page_config(page_title="FinAll")
-pg.run()
-
+#pg.run()
 
 st.write("""
 # Welcome to FinAll Project!
