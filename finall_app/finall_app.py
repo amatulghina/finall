@@ -43,7 +43,7 @@ Despite the historical evidence that stock markets generate superior long-term r
 
 This platform is built to bridge the financial literacy gap in the stock market.
 
-In order to give you personalized financial advice, we would like to know you more. Please fill the form below:
+In order to give you personalized financial advice, please fill the form below:
 
 """)
 # Initialize session state for form submission tracking
