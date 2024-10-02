@@ -163,7 +163,7 @@ if st.button("Submit"):
             continue
     # Build ARIMA model and inverse the log form
     model = ARIMA(data['Adj Close Log'], order=(best_order)).fit()
-    log_forecasts = model.forecast(len(test)+5)
+    log_forecasts = model.forecast(5)
     forecasts = np.exp(log_forecasts)
     forecasts = forecasts.to_frame('forecasts')
     df = data.merge(forecasts, how='outer', left_index=True, right_index=True)
