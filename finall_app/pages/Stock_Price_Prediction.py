@@ -10,6 +10,10 @@ from datetime import datetime, timedelta
 from scipy.stats import boxcox
 from scipy.special import inv_boxcox
 import plotly.express as px
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import matplotlib.pyplot as plt
 
 st.write("""
 # Stock Price Prediction
@@ -125,9 +129,14 @@ if st.button("Submit"):
     
     # Download Historical Data
     data = yf.download(ticker, period='1mo')
-    data.reset_index(inplace=True)
-    data = data[['Date','Adj Close']]
+    #data.reset_index(inplace=True)
+    #data = data[['Date','Adj Close']]
 
     # Plot the historical prices
-    fig = px.line(x=data['Date'], y=data['Adj Close'], title = ticker)
-    st.plotly_chart(fig)
+    #fig = px.line(x=data['Date'], y=data['Adj Close'], title = ticker)
+    #st.plotly_chart(fig)
+    st.line_chart(data['Adj Close'])
+    
+    
+    
+    
