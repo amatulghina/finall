@@ -65,7 +65,8 @@ if st.button("Submit"):
     st.write("""
     ### Company Information
     """)
-    st.write(f"Company's Name: {company.info['longName']})
+    
+    st.write(f"Company's Name: {company.info['longName']}")
     st.write(f"Industry: {company.info['industry']}")
     st.write(f"Address: {company.info['address1']}, {company.info['city']}")
     st.write(f"Number of Employees: {company.info['fullTimeEmployees']}")
