@@ -341,5 +341,5 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         
         st.header("Company Analysis")
         
-        st.write("If you want to know more about individual stock analysis, please move to the next section by selection the tab **Company Analysis** on the sidebar. Thank you!")
+        st.write("If you want to know more about individual stock analysis, please move to the next section by selecting the tab **Company Analysis** on the sidebar. Thank you!")
        
