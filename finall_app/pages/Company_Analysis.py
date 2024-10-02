@@ -57,15 +57,18 @@ st.session_state['ticker'] = st.selectbox(
     index=indices[st.session_state['country']][2].index(st.session_state['ticker']) if st.session_state['ticker'] in indices[st.session_state['country']][2] else 0
 )
 
-# Display selected options
-st.write(f"Selected Country: {st.session_state['country']}")
-st.write(f"Selected Ticker: {st.session_state['ticker']}")
-
 # Button to confirm selections and move to the next step
 if st.button("Submit"):
+    
+    st.write("""
+    # Fundamental Analysis
+    """)
+    
     # Use the selected country and ticker for modeling
     ticker = st.session_state['ticker']
-
+    
+    company = yf.Ticker(ticker)
+    
     income_stmt = company.income_stmt.reset_index()
     income_stmt.columns = ['Income Statement','2023','2022','2021','2020','2019']
     income_stmt=income_stmt[['Income Statement','2023','2022','2021','2020']]
@@ -76,5 +79,26 @@ if st.button("Submit"):
     income_stmt = income_stmt.sort_values('Income Statement')
     income_stmt.reset_index(drop=True, inplace=True)
     st.dataframe(income_stmt, hide_index=True)
-
     
+    balance_sheet = company.balance_sheet.reset_index()
+    balance_sheet.columns = ['Balance Sheet','2023','2022','2021','2020','2019']
+    balance_sheet=balance_sheet[['Balance Sheet','2023','2022','2021','2020']]
+    list_balance_sheet = ['Current Assets','Total Assets','Current Liabilities','Long Term Debt And Capital Lease Obligation','Stockholders Equity']
+    balance_sheet = balance_sheet[balance_sheet['Balance Sheet'].isin(list_balance_sheet)]
+    balance_sheet[['2023','2022','2021','2020']] = balance_sheet[['2023','2022','2021','2020']].astype(float) 
+    balance_sheet['Balance Sheet'] = pd.Categorical(balance_sheet['Balance Sheet'], categories=list_balance_sheet, ordered=True)
+    balance_sheet = balance_sheet.sort_values('Balance Sheet')
+    balance_sheet.reset_index(drop=True, inplace=True)
+    balance_sheet['Balance Sheet'] = balance_sheet['Balance Sheet'].replace('Long Term Debt And Capital Lease Obligation', 'Long Term Debt')
+    st.dataframe(balance_sheet, hide_index=True)
+    
+    cash_flow = company.cashflow.reset_index()
+    cash_flow.columns = ['Cash Flow','2023','2022','2021','2020','2019']
+    cash_flow=cash_flow[['Cash Flow','2023','2022','2021','2020']]
+    list_cash_flow = ['Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Free Cash Flow']
+    cash_flow = cash_flow[cash_flow['Cash Flow'].isin(list_cash_flow)]
+    cash_flow[['2023','2022','2021','2020']] = cash_flow[['2023','2022','2021','2020']].astype(float) 
+    cash_flow['Cash Flow'] = pd.Categorical(cash_flow['Cash Flow'], categories=list_cash_flow, ordered=True)
+    cash_flow = cash_flow.sort_values('Cash Flow')
+    cash_flow.reset_index(drop=True, inplace=True)
+    st.dataframe(cash_flow, hide_index=True)
