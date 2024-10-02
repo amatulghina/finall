@@ -77,8 +77,8 @@ if st.button("Submit"):
     
     # Income Statement    
     income_stmt = company.income_stmt.reset_index()
-    income_stmt.columns = ['Income Statement','2023','2022','2021','2020','2019']
-    income_stmt=income_stmt[['Income Statement','2023','2022','2021','2020']]
+    income_stmt = income_stmt.iloc[:, :5]
+    income_stmt.columns = ['Income Statement','2023','2022','2021','2020']
     list_income_stmt = ['Total Revenue','Cost of Revenue','Gross Profit','Operating Income','Net Income','Diluted EPS']
     income_stmt = income_stmt[income_stmt['Income Statement'].isin(list_income_stmt)]
     income_stmt[['2023','2022','2021','2020']] = income_stmt[['2023','2022','2021','2020']].astype(float) 
@@ -88,8 +88,8 @@ if st.button("Submit"):
     st.dataframe(income_stmt, hide_index=True)
     # Balance Sheet
     balance_sheet = company.balance_sheet.reset_index()
-    balance_sheet.columns = ['Balance Sheet','2023','2022','2021','2020','2019']
-    balance_sheet=balance_sheet[['Balance Sheet','2023','2022','2021','2020']]
+    balance_sheet = balance_sheet.iloc[:, :5]
+    balance_sheet.columns = ['Balance Sheet','2023','2022','2021','2020']
     list_balance_sheet = ['Current Assets','Total Assets','Current Liabilities','Long Term Debt And Capital Lease Obligation','Stockholders Equity']
     balance_sheet = balance_sheet[balance_sheet['Balance Sheet'].isin(list_balance_sheet)]
     balance_sheet[['2023','2022','2021','2020']] = balance_sheet[['2023','2022','2021','2020']].astype(float) 
@@ -100,8 +100,8 @@ if st.button("Submit"):
     st.dataframe(balance_sheet, hide_index=True)
     # Cash Flow
     cash_flow = company.cashflow.reset_index()
-    cash_flow.columns = ['Cash Flow','2023','2022','2021','2020','2019']
-    cash_flow=cash_flow[['Cash Flow','2023','2022','2021','2020']]
+    cash_flow = cash_flow.iloc[:, :5]
+    cash_flow.columns = ['Cash Flow','2023','2022','2021','2020']
     list_cash_flow = ['Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Free Cash Flow']
     cash_flow = cash_flow[cash_flow['Cash Flow'].isin(list_cash_flow)]
     cash_flow[['2023','2022','2021','2020']] = cash_flow[['2023','2022','2021','2020']].astype(float) 
