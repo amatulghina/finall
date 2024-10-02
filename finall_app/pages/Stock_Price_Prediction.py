@@ -132,7 +132,7 @@ if st.button("Submit"):
     ticker = company_tickers[ticker_company]
     
     st.header("Short-Term")
-    st.write(f"This is a short-term prediction of {ticker} stock price using ARIMA model.")
+    st.write(f"This is a short-term prediction of {ticker} stock price using ARIMA model for the next **5 days**.")
     
     # Download Historical Data
     data = yf.download(ticker, period='1mo')
@@ -186,5 +186,8 @@ if st.button("Submit"):
     # Plot the historical prices
     #fig1 = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
     st.plotly_chart(fig)
+    
+    st.write(f"Best parameter used (p,d,q): {best_order}")
+    st.dataframe(df, hide_index=True)
     
     
