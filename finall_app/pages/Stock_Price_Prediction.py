@@ -164,50 +164,24 @@ if st.button("Submit"):
             continue
     # Build ARIMA model and inverse the log form
     model = ARIMA(data['Adj Close Log'], order=(best_order)).fit()
-    #log_forecasts = model.forecast(5)
-    #forecasts = np.exp(log_forecasts)
-    #forecasts = forecasts.to_frame('forecasts')
-    #df = data.merge(forecasts, how='outer', left_index=True, right_index=True)
-    
-    # Get forecasted values and confidence intervals
-    forecast_object = model.get_forecast(steps=5)  # Forecast next 5 periods
-    forecast_values = forecast_object.predicted_mean  # The forecasted log values
-    conf_int = forecast_object.conf_int(alpha=0.05)  # 95% confidence interval
+    log_forecasts = model.forecast(5)
+    forecasts = np.exp(log_forecasts)
+    forecasts = forecasts.to_frame('forecasts')
+    df = data.merge(forecasts, how='outer', left_index=True, right_index=True)
 
-    # Exponentiate to revert from log scale to normal values
-    forecasts = np.exp(forecast_values)
-    lower_bounds = np.exp(conf_int.iloc[:, 0])  # Lower 95% CI
-    upper_bounds = np.exp(conf_int.iloc[:, 1])  # Upper 95% CI
-
-    # Create a DataFrame with forecasts and confidence intervals
-    forecast_df = pd.DataFrame({
-        'Forecast': forecasts,
-        'Lower_CI': lower_bounds,
-        'Upper_CI': upper_bounds
-    })
-
-    df = data.merge(forecast_df, how='outer', left_index=True, right_index=True)
     # Plot Data, Forecast in plotly
     fig = go.Figure()
 
     # Add traces for each column (line for each stock)
     fig.add_trace(go.Scatter(x=df.index, y=df['Adj Close'], mode='lines', name='Adj Close', line=dict(color='blue')))
-    fig.add_trace(go.Scatter(x=df.index, y=df['Forecast'], mode='lines', name='Forecast', line=dict(color='green')))
+    fig.add_trace(go.Scatter(x=df.index, y=df['forecasts'], mode='lines', name='Forecasts', line=dict(color='green')))
 
     # Customize the layout
     fig.update_layout(title='Stock Price Forecast',
                       xaxis_title='Date',
                       yaxis_title='Price',
                       template='plotly_dark')
-    fig.add_trace(go.Scatter(
-    x=df.index,
-    y=np.concatenate([df['Upper_CI'], df['Lower_CI'][::-1]]),  # Concatenate upper and lower bounds
-    fill='toself',  # Fill between the curves
-    fillcolor='rgba(0, 100, 80, 0.2)',  # Semi-transparent fill color
-    line=dict(color='rgba(255,255,255,0)'),  # No boundary line
-    showlegend=False,
-    name='95% Confidence Interval'
-    ))
+
 
     # Plot the historical prices
     #fig1 = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
