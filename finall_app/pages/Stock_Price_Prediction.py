@@ -131,7 +131,7 @@ if st.button("Submit"):
     ticker_company = st.session_state['ticker']
     ticker = company_tickers[ticker_company]
     
-    st.header("Short-Term")
+    #st.header("Short-Term")
     st.write(f"This is a short-term prediction of {ticker_company} (**{ticker}**) stock price using ARIMA model for the next **5 days**.")
     
     # Download Historical Data
