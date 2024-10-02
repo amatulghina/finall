@@ -59,16 +59,22 @@ st.session_state['ticker'] = st.selectbox(
 
 # Button to confirm selections and move to the next step
 if st.button("Submit"):
+    ticker = st.session_state['ticker']
+    company = yf.Ticker(ticker)
+
+    st.write("""
+    ### Company Information
+    """)
+    st.write(f"Company's Name: {company.info['longName']})
+    st.write(f"Industry: {company.info['industry']}")
+    st.write(f"Address: {company.info['address1']}, {company.info['city']}")
+    st.write(f"Number of Employees: {company.info['fullTimeEmployees']}")
     
     st.write("""
-    # Fundamental Analysis
+    ### Fundamental Analysis
     """)
     
-    # Use the selected country and ticker for modeling
-    ticker = st.session_state['ticker']
-    
-    company = yf.Ticker(ticker)
-    
+    # Income Statement    
     income_stmt = company.income_stmt.reset_index()
     income_stmt.columns = ['Income Statement','2023','2022','2021','2020','2019']
     income_stmt=income_stmt[['Income Statement','2023','2022','2021','2020']]
@@ -79,7 +85,7 @@ if st.button("Submit"):
     income_stmt = income_stmt.sort_values('Income Statement')
     income_stmt.reset_index(drop=True, inplace=True)
     st.dataframe(income_stmt, hide_index=True)
-    
+    # Balance Sheet
     balance_sheet = company.balance_sheet.reset_index()
     balance_sheet.columns = ['Balance Sheet','2023','2022','2021','2020','2019']
     balance_sheet=balance_sheet[['Balance Sheet','2023','2022','2021','2020']]
@@ -91,7 +97,7 @@ if st.button("Submit"):
     balance_sheet.reset_index(drop=True, inplace=True)
     balance_sheet['Balance Sheet'] = balance_sheet['Balance Sheet'].replace('Long Term Debt And Capital Lease Obligation', 'Long Term Debt')
     st.dataframe(balance_sheet, hide_index=True)
-    
+    # Cash Flow
     cash_flow = company.cashflow.reset_index()
     cash_flow.columns = ['Cash Flow','2023','2022','2021','2020','2019']
     cash_flow=cash_flow[['Cash Flow','2023','2022','2021','2020']]
