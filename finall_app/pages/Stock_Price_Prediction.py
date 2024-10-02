@@ -192,7 +192,7 @@ if st.button("Submit"):
 
     # Add traces for each column (line for each stock)
     fig.add_trace(go.Scatter(x=df.index, y=df['Adj Close'], mode='lines', name='Adj Close', line=dict(color='blue')))
-    fig.add_trace(go.Scatter(x=df.index, y=df['forecasts'], mode='lines', name='Forecasts', line=dict(color='green')))
+    fig.add_trace(go.Scatter(x=df.index, y=df['Forecast'], mode='lines', name='Forecast', line=dict(color='green')))
 
     # Customize the layout
     fig.update_layout(title='Stock Price Forecast',
