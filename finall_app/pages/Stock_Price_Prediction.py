@@ -133,9 +133,9 @@ if st.button("Submit"):
     #data = data[['Date','Adj Close']]
 
     # Plot the historical prices
-    #fig = px.line(x=data['Date'], y=data['Adj Close'], title = ticker)
-    #st.plotly_chart(fig)
-    st.line_chart(data['Adj Close'])
+    fig = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
+    st.plotly_chart(fig)
+    #st.line_chart(data['Adj Close'])
     
     
     
