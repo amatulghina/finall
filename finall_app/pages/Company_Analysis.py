@@ -176,6 +176,8 @@ if st.button("Submit"):
     
     st.write("Technical analysis, on the other hand, involves analyzing **historical price** data and trading **volume** to predict future stock movements. It focuses on price patterns and market trends rather than the underlying value of the company. Typically used by traders for **short-term** trades but can also be applied to medium-term and long-term investments.")
     
+    st.write(f"The two graphs below show the closing price and volume of {ticker}")
+    
     # Download Historical Data
     data_tickers = yf.Tickers(ticker)
     df = data_tickers.tickers[ticker].history(period='1y')
