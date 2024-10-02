@@ -336,9 +336,25 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         **Average Annual Return (%)** = Average annual return over the past 5 years. Annual return is defined as percentage change in price at the end of the year.
         """)
         
+        if 'button' not in st.session_state:
+        st.session_state.button = False
+
+        def click_button():
+            st.session_state.button = not st.session_state.button
+
+        st.button('Click me', on_click=click_button)
+
+        if st.session_state.button:
+            # The message and nested widget will remain on the page
+            st.write('Button is on!')
+            st.slider('Select a value')
+        else:
+            st.write('Button is off!')
+        
+        
         st.write("""
-# Company Analysis
-""")
+        # Company Analysis
+
         # Callback function to handle selectbox changes
         def on_selectbox_change():
             st.session_state['selection_changed'] = True
@@ -379,4 +395,4 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         
         #income_stmt = income_statement(ticker)
         st.dataframe(income_stmt, hide_index=True)
-        
+        """)
