@@ -105,7 +105,7 @@ if not st.session_state.form_submitted:
             st.warning("Please fill in your gender.")
 
         else:
-            st.session_state.form_submitted = True
+            #st.session_state.form_submitted = True
             
             points = 0
             # Assign points based on answers (you can create mappings for each question)
