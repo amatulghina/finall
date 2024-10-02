@@ -335,4 +335,8 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         **Price** = Latest adjusted close price in EUR. \n
         **Average Annual Return (%)** = Average annual return over the past 5 years. Annual return is defined as percentage change in price at the end of the year.
         """)
+        
+        st.header("Company Analysis")
+        
+        st.write("If you want to know more about individual stock analysis, please move to the next section by selection the tab **Company Analysis** on the sidebar. Thank you!)
        
