@@ -188,7 +188,7 @@ if st.button("Submit"):
     st.plotly_chart(fig)
     
     st.write(f"Best parameter used (p,d,q): {best_order}")
-    df.reset_index('Date', inplace=True)
+    df.reset_index(inplace=True)
     st.dataframe(df, hide_index=True)
     
     
