@@ -104,6 +104,8 @@ if not st.session_state.form_submitted:
             st.warning("Please fill in your gender.")
 
         else:
+            st.session_state.form_submitted = True
+            
             points = 0
             # Assign points based on answers (you can create mappings for each question)
             points += {"Capital preservation": 1, "Moderate capital growth": 2, "High capital growth": 3}[q1]
