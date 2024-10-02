@@ -166,3 +166,17 @@ if st.button("Submit"):
     cash_flow = cash_flow.sort_values('Cash Flow')
     cash_flow.reset_index(drop=True, inplace=True)
     st.dataframe(cash_flow, hide_index=True)
+    
+    
+    st.write("""
+    ### Technical Analysis
+    """)
+    
+    
+    # Download Historical Data
+    data_tickers = yf.Tickers(ticker)
+    df = data_tickers.tickers[ticker].history(period='1y')
+    st.line_chart(df.Close)
+    st.line_chart(df.Volume)
+    
+    
