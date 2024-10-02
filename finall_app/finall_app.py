@@ -23,7 +23,6 @@ client = gspread.authorize(scoped_credentials)
 
 # Open the Google Sheet by name
 sheet = client.open("finall_project").worksheet("visitor")
-sheet2 = client.open("finall_project").worksheet("stock_index")
 
 # Define Multipage Apps
 #home = st.Page("finall_app.py", title="Home")
