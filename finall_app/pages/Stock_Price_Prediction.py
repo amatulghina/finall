@@ -127,15 +127,19 @@ if st.button("Submit"):
     ticker_company = st.session_state['ticker']
     ticker = company_tickers[ticker_company]
     
+    st.write("Short-Term Prediction")
     # Download Historical Data
     data = yf.download(ticker, period='1mo')
-    #data.reset_index(inplace=True)
-    #data = data[['Date','Adj Close']]
-
     # Plot the historical prices
-    fig = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
-    st.plotly_chart(fig)
-    #st.line_chart(data['Adj Close'])
+    fig1 = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
+    st.plotly_chart(fig1)
+    
+    st.write("Long-Term-Prediction")
+    # Download Historical Data
+    data = yf.download(ticker, period='5y')
+    # Plot the historical prices
+    fig2 = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
+    st.plotly_chart(fig2)
     
     
     
