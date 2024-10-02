@@ -5,6 +5,8 @@ import yfinance as yf
 import matplotlib
 from datetime import datetime
 
+st.set_page_config(page_title="FinAll")
+
 st.write("""
 # Company Analysis
 """)
