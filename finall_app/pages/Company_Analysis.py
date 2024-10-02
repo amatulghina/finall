@@ -138,9 +138,12 @@ if st.button("Submit"):
 
     st.markdown("""
     Key Indicators:
-    - EPS
-    - PER
-    - DER
+    - **Earnings Per Share (EPS)**: The portion of a company’s profit allocated to each outstanding share of common stock. A higher EPS generally indicates a more profitable company.
+    - **Price-to-Earnings Ratio (P/E Ratio)**: The ratio of a company's share price to its earnings per share. It helps assess whether a stock is overvalued or undervalued relative to its earnings.
+    - **Revenue Growth**: Observing whether a company’s revenue is growing over time gives insight into its business expansion.
+    - **Debt-to-Equity Ratio**: Evaluates a company’s financial leverage and how much of the business is financed by debt compared to equity.
+    - **Free Cash Flow**: The amount of cash a company generates after accounting for capital expenditures, which indicates the company’s ability to fund expansion, pay dividends, or reduce debt.
+
     """
     )
     
@@ -185,6 +188,15 @@ if st.button("Submit"):
     """)
     
     st.write("Technical analysis, on the other hand, involves analyzing **historical price** data and trading **volume** to predict future stock movements. It focuses on price patterns and market trends rather than the underlying value of the company. Typically used by traders for **short-term** trades but can also be applied to medium-term and long-term investments.")
+    
+    st.markdown("""
+    Key Indicators:
+    - **Moving Averages**: Simple Moving Average (SMA) and Exponential Moving Average (EMA): These smooth out price data to identify trends over a set period (e.g., 50-day or 200-day).
+    - **Relative Strength Index (RSI)**: Measures the speed and change of price movements, ranging from 0 to 100. Typically, an RSI above 70 indicates an overbought stock, while below 30 indicates an oversold stock.
+    - **Volume**: The number of shares traded. Rising prices with increasing volume indicate strength in the trend.
+    - **Candlestick Patterns**: Price charts that show the open, high, low, and close prices in a given time period. Certain patterns (e.g., doji, hammer) can suggest potential reversals.
+    """
+    )
     
     st.write(f"The two graphs below show the **closing price** and **trading volume** of {ticker}")
     
