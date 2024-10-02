@@ -36,6 +36,9 @@ st.set_page_config(page_title="FinAll")
 st.write("""
 # FinAll Project
 """)
+st.write("""
+Financial Education for All
+""")
 
 
 st.write("""
