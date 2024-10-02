@@ -337,7 +337,7 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         """)
         
         if 'button' not in st.session_state:
-        st.session_state.button = False
+            st.session_state.button = False
 
         def click_button():
             st.session_state.button = not st.session_state.button
