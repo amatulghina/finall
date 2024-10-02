@@ -127,14 +127,16 @@ if st.button("Submit"):
     ticker_company = st.session_state['ticker']
     ticker = company_tickers[ticker_company]
     
-    st.write("Short-Term Prediction")
+    st.header("Short-Term")
+    st.write(f"This is a short-term prediction of {ticker} stock price using ARIMA model.")
     # Download Historical Data
     data = yf.download(ticker, period='1mo')
     # Plot the historical prices
     fig1 = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
     st.plotly_chart(fig1)
     
-    st.write("Long-Term-Prediction")
+    st.write("Long-Term")
+    st.write(f"This is a long-term prediction of {ticker} stock price using Random Forest model.")
     # Download Historical Data
     data = yf.download(ticker, period='5y')
     # Plot the historical prices
