@@ -1,6 +1,7 @@
 import streamlit as st
 import yfinance as yf
 import pandas as pd
+import numpy as np
 import itertools
 from statsmodels.tsa.arima.model import ARIMA
 import statsmodels.tsa.stattools as adfuller
@@ -131,6 +132,7 @@ if st.button("Submit"):
     
     st.header("Short-Term")
     st.write(f"This is a short-term prediction of {ticker} stock price using ARIMA model.")
+    
     # Download Historical Data
     data = yf.download(ticker, period='1mo')
 
