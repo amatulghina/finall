@@ -135,18 +135,7 @@ if st.button("Submit"):
     """)
     
     st.write("Fundamental analysis involves evaluating a company's **financial statements** (ie., Income Statement, Balance Sheet, Cash Flow), economic factors, and overall business health to determine its **intrinsic value**. The goal is to **identify whether a stock is overvalued or undervalued** based on its fundamentals, and then make a **long-term investment** decision accordingly.")
-
-    st.markdown("""
-    Key Indicators:
-    - **Earnings Per Share (EPS)**: The portion of a company’s profit allocated to each outstanding share of common stock. A higher EPS generally indicates a more profitable company.
-    - **Price-to-Earnings Ratio (P/E Ratio)**: The ratio of a company's share price to its earnings per share. It helps assess whether a stock is overvalued or undervalued relative to its earnings.
-    - **Revenue Growth**: Observing whether a company’s revenue is growing over time gives insight into its business expansion.
-    - **Debt-to-Equity Ratio**: Evaluates a company’s financial leverage and how much of the business is financed by debt compared to equity.
-    - **Free Cash Flow**: The amount of cash a company generates after accounting for capital expenditures, which indicates the company’s ability to fund expansion, pay dividends, or reduce debt.
-
-    """
-    )
-    
+ 
     # Income Statement    
     income_stmt = company.income_stmt.reset_index()
     income_stmt = income_stmt.iloc[:, :5]
@@ -182,12 +171,30 @@ if st.button("Submit"):
     cash_flow.reset_index(drop=True, inplace=True)
     st.dataframe(cash_flow, hide_index=True)
     
+    st.markdown("""
+    Key Indicators:
+    - **Earnings Per Share (EPS)**: The portion of a company’s profit allocated to each outstanding share of common stock. A higher EPS generally indicates a more profitable company.
+    - **Price-to-Earnings Ratio (P/E Ratio)**: The ratio of a company's share price to its earnings per share. It helps assess whether a stock is overvalued or undervalued relative to its earnings.
+    - **Revenue Growth**: Observing whether a company’s revenue is growing over time gives insight into its business expansion.
+    - **Debt-to-Equity Ratio**: Evaluates a company’s financial leverage and how much of the business is financed by debt compared to equity.
+    - **Free Cash Flow**: The amount of cash a company generates after accounting for capital expenditures, which indicates the company’s ability to fund expansion, pay dividends, or reduce debt.
+
+    """
+    )
     
     st.write("""
     ### Technical Analysis
     """)
     
     st.write("Technical analysis, on the other hand, involves analyzing **historical price** data and trading **volume** to predict future stock movements. It focuses on price patterns and market trends rather than the underlying value of the company. Typically used by traders for **short-term** trades but can also be applied to medium-term and long-term investments.")
+    
+    st.write(f"The two graphs below show the **closing price** and **trading volume** of {ticker}")
+    
+    # Download Historical Data
+    data_tickers = yf.Tickers(ticker)
+    df = data_tickers.tickers[ticker].history(period='1y')
+    st.line_chart(df.Close)
+    st.line_chart(df.Volume)
     
     st.markdown("""
     Key Indicators:
@@ -197,13 +204,5 @@ if st.button("Submit"):
     - **Candlestick Patterns**: Price charts that show the open, high, low, and close prices in a given time period. Certain patterns (e.g., doji, hammer) can suggest potential reversals.
     """
     )
-    
-    st.write(f"The two graphs below show the **closing price** and **trading volume** of {ticker}")
-    
-    # Download Historical Data
-    data_tickers = yf.Tickers(ticker)
-    df = data_tickers.tickers[ticker].history(period='1y')
-    st.line_chart(df.Close)
-    st.line_chart(df.Volume)
     
     
