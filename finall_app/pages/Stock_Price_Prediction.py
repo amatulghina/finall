@@ -133,18 +133,55 @@ if st.button("Submit"):
     st.write(f"This is a short-term prediction of {ticker} stock price using ARIMA model.")
     # Download Historical Data
     data = yf.download(ticker, period='1mo')
+
+    # Make the variance stationary
+    data["Adj Close Log"] = np.log(data["Adj Close"])
+
+    # Finding the best parameter for ARIMA model
+
+    # Define p, d, and q ranges
+    p = range(0, 5)
+    d = range(0, 2)
+    q = range(0, 5)
+
+    # Generate all combinations of p, d, q
+    pdq = list(itertools.product(p, d, q))
+    best_aic = float('inf')
+    best_order = None
+
+    # Loop through all combinations of (p, d, q)
+    for param in pdq:
+        try:
+            model = sm.tsa.ARIMA(data['Adj Close Log'], order=param)
+            results = model.fit()
+            if results.aic < best_aic:
+                best_aic = results.aic
+                best_order = param
+        except:
+            continue
+    # Build ARIMA model and inverse the log form
+    model = ARIMA(data['Adj Close Log'], order=(best_order)).fit()
+    log_forecasts = model.forecast(len(test)+5)
+    forecasts = np.exp(log_forecasts)
+    forecasts = forecasts.to_frame('forecasts')
+    df = data.merge(forecasts, how='outer', left_index=True, right_index=True)
+
+    # Plot Data, Forecast in plotly
+    fig = go.Figure()
+
+    # Add traces for each column (line for each stock)
+    fig.add_trace(go.Scatter(x=df.index, y=df['Adj Close'], mode='lines', name='Adj Close', line=dict(color='blue')))
+    fig.add_trace(go.Scatter(x=df.index, y=df['forecasts'], mode='lines', name='Forecasts', line=dict(color='green')))
+
+    # Customize the layout
+    fig.update_layout(title='Stock Price Forecast',
+                      xaxis_title='Date',
+                      yaxis_title='Price',
+                      template='plotly_dark')
+
+
     # Plot the historical prices
-    fig1 = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
-    st.plotly_chart(fig1)
-    
-    st.write("Long-Term")
-    st.write(f"This is a long-term prediction of {ticker} stock price using Random Forest model.")
-    # Download Historical Data
-    data = yf.download(ticker, period='5y')
-    # Plot the historical prices
-    fig2 = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
-    st.plotly_chart(fig2)
-    
-    
+    #fig1 = px.line(data, x=data.index, y=data['Adj Close'], title = ticker)
+    st.plotly_chart(fig)
     
     
