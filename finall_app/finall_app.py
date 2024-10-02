@@ -137,9 +137,9 @@ if not st.session_state.form_submitted:
             loss_tol += {"Minimize risk": 1, "Moderate risk": 2, "High risk": 3}[q9]
 
             # Determine the risk profile based on the total score
-            if points <= 9:
+            if points <= 13:
                 profile = "Conservative"
-            elif points <= 18:
+            elif points <= 22:
                 profile = "Moderate"
             else:
                 profile = "Aggressive"
