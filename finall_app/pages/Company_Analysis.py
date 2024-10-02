@@ -136,14 +136,14 @@ if st.button("Submit"):
     
     st.write("Fundamental analysis involves evaluating a company's **financial statements** (ie., Income Statement, Balance Sheet, Cash Flow), economic factors, and overall business health to determine its **intrinsic value**. The goal is to **identify whether a stock is overvalued or undervalued** based on its fundamentals, and then make a **long-term investment** decision accordingly.")
 
-st.markdown(
-"""
-Key Indicators:
-- EPS
-- PER
-- DER
-"""
-)
+    st.markdown("""
+    Key Indicators:
+    - EPS
+    - PER
+    - DER
+    """
+    )
+    
     # Income Statement    
     income_stmt = company.income_stmt.reset_index()
     income_stmt = income_stmt.iloc[:, :5]
