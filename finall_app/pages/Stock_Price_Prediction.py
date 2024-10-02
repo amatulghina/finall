@@ -184,6 +184,7 @@ if st.button("Submit"):
         'Forecast': forecasts,
         'Lower_CI': lower_bounds,
         'Upper_CI': upper_bounds
+    })
 
     df = data.merge(forecasts_df, how='outer', left_index=True, right_index=True)
     # Plot Data, Forecast in plotly
