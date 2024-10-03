@@ -135,7 +135,7 @@ if st.button("Submit"):
     st.write(f"This is a short-term prediction of {ticker_company} (**{ticker}**) stock price using ARIMA model for the next **5 days**.")
     
     # Download Historical Data
-    data = yf.download(ticker, period='1mo')
+    data = yf.download(ticker, period='2mo')
 
     # Make the variance stationary
     data["Adj Close Log"] = np.log(data["Adj Close"])
