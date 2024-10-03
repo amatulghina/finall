@@ -1,10 +1,12 @@
 # Introduction
 Despite the historical evidence that stock markets generate superior long-term returns compared to other financial instruments, individual and household stock market participation by individual and households remains low in many European countries.
-Research shows that financial literacy plays a crucial role in determining individual’s stock market participation.
+Research shows that financial literacy is crucial in determining an individual’s stock market participation.
 
-Vision: Financial Education for All
-Objective: Increase financial literacy in the stock market.
-Country: Germany, France, Spain
+**Finall App** is built to **bridge the financial literacy gap** in the individual stock market participation.
+
+- Vision: Financial Education for All
+- Objective: Increase financial literacy in the stock market.
+- Country: Germany, France, Spain
 
 # FinAll App Content
 - Personal Finance
