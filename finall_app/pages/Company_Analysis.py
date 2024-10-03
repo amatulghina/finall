@@ -192,7 +192,7 @@ if st.button("Submit"):
     
     # Download Historical Data
     data_tickers = yf.Tickers(ticker)
-    df = data_tickers.tickers[ticker].history(period='1y')
+    df = data_tickers.tickers[ticker].history(period='5y')
     st.line_chart(df.Close)
     st.line_chart(df.Volume)
     
