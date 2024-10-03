@@ -8,7 +8,7 @@ Research shows that financial literacy is crucial in determining an individualâ€
 - Objective: Increase financial literacy in the stock market.
 - Country: Germany, France, Spain
 
-# FinAll App Content
+# FinAll App Features
 - Personal Finance
   - Introductory content to personal finance
   - User profile screening
