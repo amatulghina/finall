@@ -8,10 +8,26 @@ Country: Germany, France, Spain
 
 # FinAll App Content
 - Personal Finance
-  -   
+  - Introductory content to personal finance
+  - User profile screening
+  - Investment Allocation Recommendation
+   
 - Stock Market Index
+  Country-specific index:
+  - Industries
+  - Market Capitalization
+  - Current Price
+  - Average Annual Return
+
 - Company Analysis
+  - Company Information
+  - Fundamental Analysis
+  - Technical Analysis
+    
 - Stock Price Prediction
+  Company-specific:
+  - ARIMA Model
+  - Best parameter tuning
   
 # FinAll Architecture Diagram
 
