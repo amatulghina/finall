@@ -328,6 +328,8 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
 
         df = df[df["Industry"]!="N/A"]
         df["Market Cap"] = pd.to_numeric(df["Market Cap"])
+        df['Avg. Annual Return (%)'] = pd.to_numeric(df['Avg. Annual Return (%)'])
+        df['Price'] = pd.to_numeric(df['Price'])
         df = df.sort_values(by="Market Cap", ascending=False)
         df = df.reset_index(drop=True)
         st.dataframe(df, hide_index=True)
