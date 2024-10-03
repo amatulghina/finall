@@ -121,7 +121,7 @@ st.session_state['country'] = st.selectbox(
 
 # Selectbox for ticker, dynamically populated based on selected country
 st.session_state['ticker'] = st.selectbox(
-    "Select one of the companies in the list to be analyzed:", 
+    "Select one of the companies in the list to be forecasted:", 
     indices[st.session_state['country']][3],  # Populate based on the selected country
     index=indices[st.session_state['country']][3].index(st.session_state['ticker']) if st.session_state['ticker'] in indices[st.session_state['country']][3] else 0
 )
