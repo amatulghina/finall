@@ -34,3 +34,7 @@ Research shows that financial literacy is crucial in determining an individualâ€
 # FinAll Architecture Diagram
 
 <img width="1433" alt="Screenshot 2024-10-03 at 11 07 56" src="https://github.com/user-attachments/assets/3951724a-7f9b-4557-b0e4-7762bcd43cab">
+
+# Project Management
+
+Trello Board: https://trello.com/b/AmPHq5P7/finall
