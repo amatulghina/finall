@@ -224,24 +224,24 @@ Based on this rule, your investment portfolio may consists of :blue[**{100-age}%
         
         # Define the stock market index by country
         indices = {
-            "France" : ["CAC 40","^FCHI",
-                        ['AIR.PA', 'ALO.PA', 'ORA.PA', 'BNP.PA', 'EN.PA', 'VIE.PA', 'ENGI.PA', 'CA.PA', 
-                         'BN.PA', 'ACA.PA', 'SGO.PA', 'LR.PA', 'RMS.PA', 'RI.PA', 'SAN.PA', 'AI.PA',
-                         'CAP.PA', 'SU.PA', 'DSY.PA', 'EDF.PA', 'VIV.PA', 'KER.PA', 'MC.PA', 'MT.PA',
-                         'OR.PA', 'PUB.PA', 'SAF.PA', 'STM.PA', 'FTI.PA', 'DG.PA', 'HO.PA', 'ML.PA',
-                         'FR.PA', 'WLN.PA', 'CS.PA', 'FP.PA', 'TTE.PA', 'SG.PA', 'URW.PA', 'VK.PA']],
-            "Germany" : ["DAX 40","^GDAXI",
-                         ['ADS.DE','AIR.DE','ALV.DE', 'BAS.DE', 'BAYN.DE', 'BEI.DE', 'BMW.DE', 'CON.DE',
-                          '1COV.DE', 'DHER.DE', 'DTE.DE', 'DPW.DE', 'DB1.DE', 'DBK.DE', 'ENR.DE', 'FRE.DE',   
-                          'FME.DE', 'HEN3.DE', 'HNR1.DE', 'IFX.DE', 'LIN.DE', 'MRK.DE', 'MTX.DE', 'MUV2.DE',
-                          'PUM.DE', 'RWE.DE', 'SAP.DE', 'SHL.DE', 'SIE.DE', 'VNA.DE', 'VOW3.DE', 'ZAL.DE',
-                          'HEI.DE', 'BAYN.DE', 'SY1.DE', 'HFG.DE', 'MBG.DE', 'HLE.DE', 'BNR.DE', 'TYO.DE']],
-            "Spain" : ["IBEX 35","^IBEX",
-                       ['ACX.MC', 'ACS.MC', 'AENA.MC', 'ALM.MC', 'AMS.MC', 'ANA.MC', 'BBVA.MC', 'BKT.MC',
-                        'CABK.MC', 'CLNX.MC', 'COL.MC', 'ELE.MC', 'ENG.MC', 'FER.MC', 'GRF.MC', 'IAG.MC',
-                        'IBE.MC', 'ITX.MC','MEL.MC', 'MTS.MC', 'NTGY.MC', 'PHM.MC', 'RED.MC', 'REP.MC', 'ROVI.MC',
-                        'SAB.MC', 'SAN.MC', 'SGRE.MC', 'SLR.MC', 'TEF.MC']]
-                }
+        "France" : ["CAC 40","^FCHI",
+                    ["AC.PA","ACA.PA","AI.PA","AIR.PA","BN.PA","BNP.PA","CA.PA","CAP.PA","CS.PA",
+                     "DG.PA","DSY.PA","EDEN.PA","EL.PA","EN.PA","ENGI.PA","ERF.PA","GLE.PA","HO.PA",
+                     "KER.PA","LR.PA","MC.PA","ML.PA","MT.PA","OR.PA","ORA.PA","PUB.PA","RI.PA",
+                     "RMS.PA","RNO.PA","SAF.PA","SAN.PA","SGO.PA","STLAP.PA","STMPA.PA","SU.PA",
+                     "TEP.PA","TTE.PA","URW.PA","VIE.PA","VIV.PA"]],
+        "Germany" : ["DAX 40","^GDAXI",
+                     ['ADS.DE','AIR.DE','ALV.DE', 'BAS.DE', 'BAYN.DE', 'BEI.DE', 'BMW.DE', 'CON.DE',
+                      '1COV.DE', 'DHER.DE', 'DTE.DE', 'DPW.DE', 'DB1.DE', 'DBK.DE', 'ENR.DE', 'FRE.DE',   
+                      'FME.DE', 'HEN3.DE', 'HNR1.DE', 'IFX.DE', 'LIN.DE', 'MRK.DE', 'MTX.DE', 'MUV2.DE',
+                      'PUM.DE', 'RWE.DE', 'SAP.DE', 'SHL.DE', 'SIE.DE', 'VNA.DE', 'VOW3.DE', 'ZAL.DE',
+                      'HEI.DE', 'BAYN.DE', 'SY1.DE', 'HFG.DE', 'MBG.DE', 'HLE.DE', 'BNR.DE', 'TYO.DE']],
+        "Spain" : ["IBEX 35","^IBEX",
+                   ["ACS.MC","ACX.MC","AENA.MC","AMS.MC","ANA.MC","ANE.MC","BBVA.MC","BKT.MC","CABK.MC",
+                    "CLNX.MC","COL.MC","ELE.MC","ENG.MC","FDR.MC","FER.MC","GRF.MC","IAG.MC","IBE.MC",
+                    "IDR.MC","ITX.MC","LOG.MC","MAP.MC","MRL.MC","MTS.MC","NTGY.MC","PUIG.MC","RED.MC",
+                    "REP.MC","ROVI.MC","SAB.MC","SAN.MC","SCYR.MC","SLR.MC","TEF.MC","UNI.MC"]]
+            }
 
         if country == "France":
             st.write("""
