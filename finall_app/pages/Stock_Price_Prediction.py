@@ -143,9 +143,9 @@ if st.button("Submit"):
     # Finding the best parameter for ARIMA model
 
     # Define p, d, and q ranges
-    p = range(0, 8)
+    p = range(0, 7)
     d = range(0, 2)
-    q = range(0, 8)
+    q = range(0, 7)
 
     # Generate all combinations of p, d, q
     pdq = list(itertools.product(p, d, q))
