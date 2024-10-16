@@ -37,5 +37,5 @@ We retain your personal data only as long as necessary to fulfill the purposes o
 We may update this Privacy Policy periodically. Any changes will be posted on this page.
 
 **9. Contact Us** \n
-If you have any questions about this Privacy Policy or your personal data, please contact us at [contact email].
+If you have any questions about this Privacy Policy or your personal data, please contact us at [amatulghina@gmail.com].
 """)
