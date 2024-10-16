@@ -133,7 +133,7 @@ if st.button("Submit"):
     ticker = company_tickers[ticker_company]
     
     #st.header("Short-Term")
-    st.write(f"This is a short-term prediction of {ticker_company} (**{ticker}**) stock price using ARIMA model for the next **5 days**.")
+    st.write(f"This is a short-term prediction of {ticker_company} (**{ticker}**) stock price for the next **5 days** using ARIMA model.")
     
     # Download Historical Data
     data = yf.download(ticker, period='1mo')
