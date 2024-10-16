@@ -11,21 +11,21 @@ At **FinAll**, we respect your privacy and are committed to protecting your pers
 We collect minimal personal data to provide and improve our services. This may include your name which are collected when you voluntarily provide them.
 
 **2. How We Use Your Data** \n
-We use your data for the following purposes:
-To provide and maintain the functionality of the app.
-To respond to your inquiries or support requests.
-To analyze usage patterns and improve the app’s performance.
+We use your data for the following purposes: \n
+- To provide and maintain the functionality of the app. \n
+- To respond to your inquiries or support requests. \n
+- To analyze usage patterns and improve the app’s performance. \n
 
 **3. Data Sharing** \n
 We do not sell or share your personal data with third parties.
 
 **4. User Rights** \n
-You have the following rights under GDPR:
-Access: You can request access to the personal data we hold about you.
-Correction: You can ask us to correct any inaccurate information.
-Deletion: You can request the deletion of your personal data.
-Objection/Restriction: You can object to or restrict certain data processing activities.
-To exercise your rights, please contact us at [amatulghina@gmail.com].
+You have the following rights under GDPR: \n
+- Access: You can request access to the personal data we hold about you. \n
+- Correction: You can ask us to correct any inaccurate information. \n
+- Deletion: You can request the deletion of your personal data. \n
+- Objection/Restriction: You can object to or restrict certain data processing activities. \n
+To exercise your rights, please contact us at [amatulghina@gmail.com]. \n
 
 **5. Data Security** \n
 We take the security of your data seriously and protect your personal information from unauthorized access or breaches.
