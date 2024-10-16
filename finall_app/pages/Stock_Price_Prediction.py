@@ -16,6 +16,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
+from pandas.tseries.offsets import BDay
 
 st.set_page_config(page_title="FinAll")
 
@@ -162,11 +163,15 @@ if st.button("Submit"):
                 best_order = param
         except:
             continue
+    
     # Build ARIMA model and inverse the log form
+    pred_days = 5
+    forecasts_date = pd.date_range(start=data.index[-1], periods=pred_days+1, freq=BDay())
     model = ARIMA(data['Adj Close Log'], order=(best_order)).fit()
-    log_forecasts = model.forecast(5)
+    log_forecasts = model.forecast(pred_days)
     forecasts = np.exp(log_forecasts)
-    forecasts = forecasts.to_frame('forecasts')
+    forecasts = pd.concat([pd.Series([data["Adj Close"][-1]]), forecasts], ignore_index=True)
+    forecasts = pd.DataFrame(forecasts.values, index=forecasts_date, columns=['Forecasts'])
     df = data.merge(forecasts, how='outer', left_index=True, right_index=True)
 
     # Plot Data, Forecast in plotly
